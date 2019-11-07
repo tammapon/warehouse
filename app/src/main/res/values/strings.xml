@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">test4</string>
+    <string name="id">ID</string>
+    <string name="phonenumber">phonenumber</string>
+    <string name="pass">pass</string>
+    <string name="name">name</string>
+    <string name="for_admin">for admin</string>
+    <string name="for_manag_employ">for manag/employ</string>
+    <string name="create">create</string>
 </resources>
