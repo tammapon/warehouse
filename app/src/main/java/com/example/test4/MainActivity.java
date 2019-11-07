@@ -52,4 +52,4 @@ public class MainActivity extends AppCompatActivity {
         myRef.child("testcode").child("Lnwsoftdev").setValue("001");
         myRef.child("testcode").child("Noobsoftdev").setValue("002");
     }
-}
+}jjjj
