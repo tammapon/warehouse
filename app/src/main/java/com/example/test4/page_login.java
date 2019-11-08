@@ -36,18 +36,15 @@ public class page_login extends AppCompatActivity {
             public void onClick(View v) {
                 if (id_login.getText().toString().equals("napat")&&pass_login.getText().toString().equals("napat")){
                     Toast.makeText(getApplication(),"success",Toast.LENGTH_LONG).show();
-
                     //send data to databse and return level to check
                     if(level.equals("A")){
                         startActivity(new Intent(page_login.this,page_admin.class));
                     }
                     else if(level.equals("B")){
-                        Intent T2 = new Intent(page_login.this,page_manager.class);
-                        startActivity(T2);
+                        startActivity(new Intent(page_login.this,page_manager.class));
                     }
                     else if(level.equals("C")){
-                        Intent T3 = new Intent(page_login.this,page_employee.class);
-                        startActivity(T3);
+                        startActivity(new Intent(page_login.this,page_employee.class));
                     }
                 }
                 else{
