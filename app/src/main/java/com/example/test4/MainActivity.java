@@ -26,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_login);
-        Intent T1 = new Intent(MainActivity.this,page_login.class);
-        startActivity(T1);
+        //Intent T1 = new Intent(MainActivity.this,page_login.class);
+        //startActivity(T1);
+        Intent test = new Intent(MainActivity.this,Mainactivity_start.class);
+        startActivity(test);
         //setContentView(R.layout.activity_main);
 //        mFirebaseTextView = (TextView)findViewById(R.id.firebaseTextView);
 //        // Get firebase database ref
