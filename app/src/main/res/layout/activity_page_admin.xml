@@ -17,4 +17,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.09" />
+
+    <Button
+        android:id="@+id/btn_addManager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="addmanager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.17" />
+
+    <Button
+        android:id="@+id/btn_removeManager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="removemanager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_addManager"
+        app:layout_constraintVertical_bias="0.076" />
+
+    <Button
+        android:id="@+id/btn_addEmployee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="addemployee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_removeManager"
+        app:layout_constraintVertical_bias="0.148" />
+
+    <Button
+        android:id="@+id/btn_removeEmployee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="removeEmployee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_addEmployee"
+        app:layout_constraintVertical_bias="0.191" />
 </androidx.constraintlayout.widget.ConstraintLayout>
