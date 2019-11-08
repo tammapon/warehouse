@@ -10,11 +10,23 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class page_register extends AppCompatActivity {
     Boolean check_A = false,check_B  =false;
     CheckBox checkbox_A,checkbox_ME;
     EditText id_regis,pass_regis,name_regis,mail_regis,phone_regis;
     Button create_register;
+    public DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +41,17 @@ public class page_register extends AppCompatActivity {
         name_regis=(EditText)findViewById(R.id.name_regis);
         mail_regis=(EditText)findViewById(R.id.mail_regis);
         phone_regis=(EditText)findViewById(R.id.phone_regis);
+        final Text buffer;
 
         create_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //send data to datbase
+                //myRef.child("user").setValue(id_regis);
+                Map<String, Object> value = new HashMap<String, Object>();
+                value.put("user","kkk");
+                myRef.child("user").updateChildren(value);
+                myRef.child("user").child("kkk").child("name").setValue(name_regis);
                 if(check_A.equals(true)){
                     startActivity(new Intent(page_register.this,page_login.class));
                 }
