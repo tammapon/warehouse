@@ -3,6 +3,7 @@ package com.example.test4;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class page_admin extends AppCompatActivity {
@@ -17,6 +18,13 @@ public class page_admin extends AppCompatActivity {
         btn_remove_em=(Button)findViewById(R.id.btn_removeEmployee);
         btn_add_man=(Button)findViewById(R.id.btn_addManager);
         btn_remove_man=(Button)findViewById(R.id.btn_removeManager);
+
+        btn_add_em.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 }
