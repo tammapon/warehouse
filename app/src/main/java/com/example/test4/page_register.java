@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class page_register extends AppCompatActivity {
+    Boolean check_A = false,check_B  =false;
     CheckBox checkbox_A,checkbox_ME;
     EditText id_regis,pass_regis,name_regis,mail_regis,phone_regis;
     Button create_register;
@@ -32,7 +34,43 @@ public class page_register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //send data to datbase
-                startActivity(new Intent(page_register.this,page_login.class));
+                if(check_A.equals(true)){
+                    startActivity(new Intent(page_register.this,page_login.class));
+                }
+                else if (check_B.equals(true)){
+                    startActivity(new Intent(page_register.this,page_levelSelect.class));
+                }
+                else {
+                    Toast.makeText(getApplication(),"please select level!!!",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        checkbox_A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkbox_A.isChecked()){
+                    Toast.makeText(getApplication(),"check_Admin",Toast.LENGTH_LONG).show();
+                    check_A = true;
+                }
+                else {
+                    Toast.makeText(getApplication(),"check_Admin_cancle",Toast.LENGTH_LONG).show();
+                    check_A = false;
+                }
+            }
+        });
+
+        checkbox_ME.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkbox_ME.isChecked()){
+                    Toast.makeText(getApplication(),"check_manager",Toast.LENGTH_LONG).show();
+                    check_B = true;
+                }
+                else {
+                    Toast.makeText(getApplication(),"check_manager_cancle",Toast.LENGTH_LONG).show();
+                    check_B=false;
+                }
             }
         });
     }
