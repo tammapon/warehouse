@@ -30,32 +30,32 @@ public class MainActivity extends AppCompatActivity {
         Intent test = new Intent(MainActivity.this,Mainactivity_start.class);
         startActivity(test);
         //setContentView(R.layout.activity_main);
-//        mFirebaseTextView = (TextView)findViewById(R.id.firebaseTextView);
-//        // Get firebase database ref
-//        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        myRef =database.getReference();
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Map map = (Map)dataSnapshot.getValue();
-//                String x = String.valueOf(map.get("testcode"));
-//                mFirebaseTextView.setText(x);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-        }
+        /*mFirebaseTextView = (TextView)findViewById(R.id.firebaseTextView);
+        // Get firebase database ref
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef =database.getReference();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Map map = (Map)dataSnapshot.getValue();
+                String x = String.valueOf(map.get("testcode"));
+                mFirebaseTextView.setText(x);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });*/
     }
 
-//    public void onClickAddButton(View view) {
-//
-//        Map<String, Object> value = new HashMap<String, Object>();
-//        value.put("testcode","Lnwsoftdev");
-//        myRef.updateChildren(value);
-//        myRef.child("testcode").child("Lnwsoftdev").setValue("001");
-//        myRef.child("testcode").child("Noobsoftdev").setValue("002");
-//    }
-//}
+    /*public void onClickAddButton(View view) {
 
+        Map<String, Object> value = new HashMap<String, Object>();
+        value.put("testcode","Lnwsoftdev");
+        myRef.updateChildren(value);
+        myRef.child("testcode").child("Lnwsoftdev").setValue("001");
+        myRef.child("testcode").child("Noobsoftdev").setValue("003");
+    }*/
+}
+//kkk
