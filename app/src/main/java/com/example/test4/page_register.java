@@ -41,7 +41,7 @@ public class page_register extends AppCompatActivity {
         create_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //send data to datbase //
+                //send data to datbase
                 bufferID = (String)id_regis.getText().toString();
                 bufferName = (String)name_regis.getText().toString();
                 bufferPass = (String)pass_regis.getText().toString();
@@ -51,7 +51,6 @@ public class page_register extends AppCompatActivity {
                 myRef.child("user").child(bufferID).child("email").setValue(buffermail);
                 myRef.child("user").child(bufferID).child("password").setValue(bufferPass);
                 myRef.child("user").child(bufferID).child("phone").setValue(bufferphone);
-                ///
                 if(check_A.equals(true)){
                     startActivity(new Intent(page_register.this,page_login.class));
                 }
@@ -59,8 +58,8 @@ public class page_register extends AppCompatActivity {
                     startActivity(new Intent(page_register.this,page_levelSelect.class));
                 }
                 else {
-                    //startActivity(new Intent(page_register.this,page_login.class));
-                    Toast.makeText(getApplication(),"please select level!!!",Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(page_register.this,page_login.class));
+                    //Toast.makeText(getApplication(),"please select level!!!",Toast.LENGTH_LONG).show();
                 }
             }
         });
