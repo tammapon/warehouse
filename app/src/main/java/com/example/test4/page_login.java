@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class page_login extends AppCompatActivity {
     EditText id_login,pass_login;
@@ -25,7 +22,7 @@ public class page_login extends AppCompatActivity {
         id_login=(EditText)findViewById(R.id.id_login);
         pass_login=(EditText)findViewById(R.id.pass_login);
         access_login=(Button)findViewById(R.id.access_login);
-        register_login=(Button) findViewById(R.id.register_login);
+        register_login=(Button)findViewById(R.id.register_login);
 
         register_login.setOnClickListener(new View.OnClickListener() {
             @Override
