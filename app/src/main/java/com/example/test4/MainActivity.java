@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     public DatabaseReference myRef;
     private TextView mFirebaseTextView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
