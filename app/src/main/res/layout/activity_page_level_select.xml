@@ -3,42 +3,61 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/frist"
     android:layout_height="match_parent"
     tools:context=".page_levelSelect">
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="selectlevel"
+        android:layout_width="157dp"
+        android:layout_height="42dp"
+        android:fontFamily="@font/segoe"
+        android:text="Select level"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.559"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.757" />
+
+    <EditText
+        android:id="@+id/inputlevel"
+        android:layout_width="317dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="500dp"
+        android:background="@drawable/button_white"
+        android:drawableStart="@drawable/log"
+        android:drawableLeft="@drawable/log"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:fontFamily="@font/segoe"
+        android:hint="Code for select level"
+        android:inputType="textEmailAddress"
+        android:textColor="#000000"
+        android:textColorHint="#808080"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.148" />
-
-    <EditText
-        android:id="@+id/inputlevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Code"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.4" />
 
     <Button
         android:id="@+id/btn_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="access"
+        android:layout_width="317dp"
+        android:layout_height="46dp"
+        android:background="@drawable/button_bg"
+        android:drawablePadding="5dp"
+        android:ems="10"
+        android:fontFamily="@font/segoe"
+        android:inputType="textEmailAddress"
+        android:text="Acess"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputlevel"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintVertical_bias="0.329" />
 </androidx.constraintlayout.widget.ConstraintLayout>
