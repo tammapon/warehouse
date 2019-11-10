@@ -51,6 +51,39 @@ public class page_register extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkbox_A.isChecked()){
                     Toast.makeText(getApplication(),"check_Admin",Toast.LENGTH_LONG).show();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     check_A = true;
                 }
                 else {
