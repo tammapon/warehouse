@@ -3,6 +3,7 @@ package com.example.test4;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,18 +29,29 @@ public class page_admin extends AppCompatActivity {
     private ArrayList<String> level = new ArrayList<String>();
     private ArrayList<String> Number = new ArrayList<String>();
     private ArrayList<String> id = new ArrayList<String>();
+    Button btn_showID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btn_showID=(Button)findViewById(R.id.btn_toshowID);
+
+        btn_showID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent test = new Intent(page_admin.this,page_showID.class);
+                startActivity(test);
+            }
+        });
+
         swipeListView = findViewById(R.id.swipeListView);
 
         //create data to listview
-        setDataListView("napat","Admin","110001");
-        setDataListView("petch","Manager","220001");
-        setDataListView("kuy","Employee","330001");
+        setDataListView("napat","10001");
+        setDataListView("petch","20001");
+        setDataListView("kuy","30001");
 
         //create swipe menu listview
         setSwipeListView();
@@ -49,10 +61,18 @@ public class page_admin extends AppCompatActivity {
 
     }
 
-    private void setDataListView(String a,String l,String i) {
+    private void setDataListView(String a,String i) {
         name.add(a);
-        level.add(l);
         id.add(i);
+        if(i.charAt(0)=='1'){
+        level.add("admin");
+        }
+        else if(i.charAt(0)=='2'){
+            level.add("employee");
+        }
+        else if(i.charAt(0)=='3'){
+            level.add("manager");
+        }
     }
 
     private void setSwipeListView() {
