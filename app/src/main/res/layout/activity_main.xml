@@ -17,7 +17,7 @@
         android:id="@+id/swipeListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/btn_toshowID"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="50dp"
         android:divider="@color/colorAccent"
@@ -36,28 +36,16 @@
         android:text="For Admin" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginRight="152dp"
-        android:text="add employee" />
-
-    <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_toshowID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginRight="144dp"
-        android:text="add manager" />
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginRight="164dp"
+        android:text="Add Team" />
 
 </RelativeLayout>
 
