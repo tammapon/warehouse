@@ -14,17 +14,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class page_register extends AppCompatActivity {
+    //database
     public DatabaseReference myRef;
+
     Boolean check_A = false,check_B  =false;
     CheckBox checkbox_A,checkbox_ME;
     EditText id_regis,pass_regis,name_regis,mail_regis,phone_regis;
     Button create_register;
-    String bufferID,bufferName,bufferPass,bufferphone,buffermail;
+    String bufferName,bufferPass,bufferphone,buffermail;
+    public static String bufferID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_register);
+        //database
         myRef = FirebaseDatabase.getInstance().getReference();
 
         create_register=(Button)findViewById(R.id.button_create_regis);
@@ -46,12 +50,15 @@ public class page_register extends AppCompatActivity {
                 bufferPass = (String)pass_regis.getText().toString();
                 bufferphone = (String)phone_regis.getText().toString();
                 buffermail = (String)mail_regis.getText().toString();
-                myRef.child("user").child(bufferID).child("name").setValue(bufferName);
-                myRef.child("user").child(bufferID).child("email").setValue(buffermail);
-                myRef.child("user").child(bufferID).child("password").setValue(bufferPass);
-                myRef.child("user").child(bufferID).child("phone").setValue(bufferphone);
+                //myRef.child("user").child(bufferID).child("name").setValue(bufferName);
+                //myRef.child("user").child(bufferID).child("email").setValue(buffermail);
+                //myRef.child("user").child(bufferID).child("password").setValue(bufferPass);
+                //myRef.child("user").child(bufferID).child("phone").setValue(bufferphone);
                 ///
                 if(check_A.equals(true)){
+                    //database
+
+                    //
                     startActivity(new Intent(page_register.this,page_login.class));
                 }
                 else if (check_B.equals(true)){
