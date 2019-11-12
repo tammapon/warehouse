@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Map map = (Map)dataSnapshot.getValue();
                 String x = String.valueOf(map.get("testcode"));
+                String x = dataSnapshot.child("name").getVaule().toString();
                 mFirebaseTextView.setText(x);
             }
 
