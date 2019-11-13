@@ -3,15 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/home_2"
     android:orientation="vertical">
 
     <ListView
         android:id="@+id/listproduct"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="400dp"
+        android:layout_height="560dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="91dp"
         android:layout_marginBottom="80dp"
         android:layout_weight="1">
 
@@ -25,6 +26,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="111dp"
         android:layout_marginBottom="8dp"
-        android:text="Scan QR Product" />
+        android:text="Scan QR Product"
+        android:background="@drawable/drawable_menu"
+        />
+
 
 </RelativeLayout>

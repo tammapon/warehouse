@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class page_login extends AppCompatActivity {
     EditText id_login,pass_login;
     Button access_login,register_login;
-    String level = "C";
+    String level = "A";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

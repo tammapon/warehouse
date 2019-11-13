@@ -18,7 +18,7 @@
         android:drawablePadding="5dp"
         android:ems="10"
         android:fontFamily="@font/segoe"
-        android:hint="Email Address"
+        android:hint="User name"
         android:inputType="textEmailAddress"
         android:textColor="#000000"
         android:textColorHint="#808080"
@@ -78,6 +78,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/access_login"
         app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

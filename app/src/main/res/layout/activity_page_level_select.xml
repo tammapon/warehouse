@@ -9,14 +9,16 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="157dp"
-        android:layout_height="42dp"
+        android:layout_width="166dp"
+        android:layout_height="48dp"
+        android:background="@drawable/button_opacity"
         android:fontFamily="@font/segoe"
-        android:text="Select level"
+        android:textColor="#000000"
+        android:text=" Select level"
+        android:ellipsize="middle"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.559"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.757" />
