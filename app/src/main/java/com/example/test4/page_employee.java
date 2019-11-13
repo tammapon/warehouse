@@ -1,5 +1,8 @@
 package com.example.test4;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +12,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
+
 public class page_employee extends AppCompatActivity {
+
+    private static final int ZXING_CAMERA_PERMISSION = 1;
+    private Class<?> mClss;
 
     ArrayList<Product> listProduct;
     ProductListViewAdapter productListViewAdapter;
@@ -22,6 +32,7 @@ public class page_employee extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_employee);
+        setupToolbar();
 
         listProduct = new ArrayList<>();
 
@@ -38,34 +49,50 @@ public class page_employee extends AppCompatActivity {
         productListViewAdapter = new ProductListViewAdapter(listProduct);
         listViewProduct.setAdapter(productListViewAdapter);
 
+    }
 
-//        listViewProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Product product = (Product) productListViewAdapter.getItem(position);
-//                Toast.makeText(MainActivity.this, product.name, Toast.LENGTH_LONG).show();
-//            }
-//        });
+    public void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    public void launchFullActivity(View v) {
+        //Toast.makeText(page_employee.this,"Scan QR IN", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this, FullScannerActivity.class));
+    }
+
+    public void launchOutActivity(View v) {
+        //Toast.makeText(page_employee.this,"Scan QR OUT", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this, ScanOutActivity.class));
+    }
 
 
-//        findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (listProduct.size() > 0) {
-//                    int productpost = 0;
-//                    listProduct.remove(productpost);
-//                    productListViewAdapter.notifyDataSetChanged();
-//                }
-//            }
-//        });
+    public void launchActivity(Class<?> clss) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            mClss = clss;
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA}, ZXING_CAMERA_PERMISSION);
+        } else {
+            Intent intent = new Intent(this, clss);
+            startActivity(intent);
+        }
+    }
 
-        findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(page_employee.this,"Scan QR Activity", Toast.LENGTH_LONG).show();
-            }
-        });
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode,  String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case ZXING_CAMERA_PERMISSION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if(mClss != null) {
+                        Intent intent = new Intent(this, mClss);
+                        startActivity(intent);
+                    }
+                } else {
+                    Toast.makeText(this, "Please grant camera permission to use the QR Scanner", Toast.LENGTH_SHORT).show();
+                }
+                return;
+        }
     }
 
     private void addProduct(String type,int id,String name,int amount){
@@ -141,3 +168,25 @@ public class page_employee extends AppCompatActivity {
         }
     }
 }
+
+
+//        listViewProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Product product = (Product) productListViewAdapter.getItem(position);
+//                Toast.makeText(MainActivity.this, product.name, Toast.LENGTH_LONG).show();
+//            }
+//        });
+
+
+//        findViewById(R.id.delete).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (listProduct.size() > 0) {
+//                    int productpost = 0;
+//                    listProduct.remove(productpost);
+//                    productListViewAdapter.notifyDataSetChanged();
+//                }
+//            }
+//        });
+

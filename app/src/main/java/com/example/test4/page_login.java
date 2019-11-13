@@ -1,7 +1,5 @@
 package com.example.test4;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +7,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class page_login extends AppCompatActivity {
     EditText id_login,pass_login;
     Button access_login,register_login;
-    String level = "A";
+    String level = "C";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
