@@ -20,17 +20,17 @@
 
     <Button
         android:id="@+id/delete"
-        android:layout_width="204dp"
-        android:layout_height="69dp"
+        android:layout_width="172dp"
+        android:layout_height="62dp"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="204dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="234dp"
+        android:layout_marginRight="234dp"
+        android:layout_marginBottom="19dp"
         android:background="@drawable/drawable_menu"
         android:onClick="launchFullActivity"
-        android:text="Import"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="204dp" />
+        android:text="Import" />
 
     <Button
         android:id="@+id/btn_export"
@@ -41,7 +41,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/red"
         android:onClick="launchOutActivity"
         android:text="export" />
 

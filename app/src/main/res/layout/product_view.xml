@@ -52,9 +52,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="50dp"
         android:layout_marginTop="15dp"
-        app:srcCompat="@android:drawable/sym_def_app_icon"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="50dp" />
+        android:layout_marginLeft="50dp"
+        app:srcCompat="@mipmap/box_foreground" />
 
     <TextView
         android:id="@+id/tx_type"
@@ -67,5 +67,4 @@
         android:text="Export"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp" />
-
 </RelativeLayout>
