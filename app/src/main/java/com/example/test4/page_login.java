@@ -2,6 +2,7 @@ package com.example.test4;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class page_login extends AppCompatActivity {
     EditText id_login,pass_login;
     Button access_login,register_login;
-    String level = "C";
+    String level = "B";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class page_login extends AppCompatActivity {
                         startActivity(new Intent(page_login.this,page_admin.class));
                     }
                     else if(level.equals("B")){
-                        startActivity(new Intent(page_login.this,mannagerfunc.class));
+                        startActivity(new Intent(page_login.this,manager_product.class));
                     }
                     else if(level.equals("C")){
                         startActivity(new Intent(page_login.this,page_employee.class));
@@ -49,6 +50,7 @@ public class page_login extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(getApplication(),"fail",Toast.LENGTH_LONG).show();
+                    Log.e("Level",level.toString());
 
                 }
             }

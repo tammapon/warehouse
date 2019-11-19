@@ -16,7 +16,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="96dp" />
 
     <EditText
         android:id="@+id/editText4"
@@ -27,7 +28,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="102dp" />
+        tools:layout_editor_absoluteX="102dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editText5"
@@ -38,7 +40,8 @@
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="102dp" />
+        tools:layout_editor_absoluteX="102dp"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/itemname"
@@ -52,7 +55,8 @@
         android:text="Item name"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="96dp" />
 
     <EditText
         android:id="@+id/editText"
@@ -62,13 +66,15 @@
         android:ems="10"
         android:inputType="text"
         app:layout_constraintTop_toTopOf="@+id/editText2"
-        tools:layout_editor_absoluteX="102dp" />
+        tools:layout_editor_absoluteX="102dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/btn_toshowID"
+        android:id="@+id/btnToaddZone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
         tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="578dp" />
+        tools:layout_editor_absoluteY="578dp"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,7 +45,7 @@ public class page_employee extends AppCompatActivity {
 
 
 
-        listViewProduct = findViewById(R.id.listproduct);
+        listViewProduct = findViewById(R.id.listzone);
         productListViewAdapter = new ProductListViewAdapter(listProduct);
         listViewProduct.setAdapter(productListViewAdapter);
 
@@ -158,7 +158,7 @@ public class page_employee extends AppCompatActivity {
 
 
             Product product = (Product) getItem(position);
-            ((TextView) viewProduct.findViewById(R.id.idproduct)).setText(String.format("ID: %d", product.productID));
+            ((TextView) viewProduct.findViewById(R.id.amount)).setText(String.format("ID: %d", product.productID));
             ((TextView) viewProduct.findViewById(R.id.nameproduct)).setText(String.format("Name: %s", product.name));
             ((TextView) viewProduct.findViewById(R.id.priceproduct)).setText(String.format("Amount: %d", product.amount));
             ((TextView) viewProduct.findViewById(R.id.tx_type)).setText(String.format("%s", product.type));

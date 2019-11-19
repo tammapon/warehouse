@@ -55,4 +55,14 @@
     <bool name="cameraPreviewShouldFillView">true</bool>
     <string name="title_activity_manyfunc"></string>
     <string name="title_activity_mannagerfunc"></string>
+    <string name="product">product</string>
+    <string name="add_product">add product</string>
+    <string name="zone">zone</string>
+    <string name="ok">ok</string>
+    <string name="productname">ProductName</string>
+    <string name="_1000">1000</string>
+    <string name="_1">1</string>
+    <string name="export">Export</string>
+    <string name="todo">TODO</string>
+    <string name="add_team">Add Team</string>
 </resources>

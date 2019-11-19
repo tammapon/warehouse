@@ -17,7 +17,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/ic_account_circle"
+            android:background="@mipmap/box_foreground"
             android:padding="1dp"
             android:scaleType="fitXY" />
 
@@ -60,7 +60,7 @@
                 android:layout_marginBottom="17dp"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="Level"
+                android:text="@string/zone"
                 android:textSize="12sp"
                 android:typeface="monospace" />
 
@@ -92,6 +92,18 @@
                 android:layout_marginLeft="13dp"
                 android:layout_marginBottom="14dp"
                 android:text="ID" />
+
+            <TextView
+                android:id="@+id/am"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_header"
+                android:layout_marginStart="31dp"
+                android:layout_marginLeft="31dp"
+                android:layout_marginTop="11dp"
+                android:layout_toEndOf="@+id/text_zone"
+                android:layout_toRightOf="@+id/text_zone"
+                android:text="TextView" />
 
         </RelativeLayout>
 

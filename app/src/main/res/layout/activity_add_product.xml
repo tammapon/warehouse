@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home_2"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.58"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:context=".page_admin"
+    tools:ignore="MissingConstraints">
+
+    <Button
+        android:id="@+id/btnToProduct"
+        android:layout_width="133dp"
+        android:layout_height="61dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginRight="225dp"
+        android:text="@string/product" />
+
+    <com.baoyz.swipemenulistview.SwipeMenuListView
+        android:id="@+id/swipeListView"
+        android:layout_width="match_parent"
+        android:layout_height="507dp"
+        android:layout_below="@+id/btnToZone"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="76dp"
+        android:divider="@color/colorPrimaryDark"
+        android:dividerHeight="1dp" />
+
+    <Button
+        android:id="@+id/btnToaddZone"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginLeft="102dp"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/drawable_menu"
+        android:drawableStart="@drawable/add"
+        android:drawableLeft="@drawable/add"
+        android:duplicateParentState="true"
+        android:fontFamily="@font/segoe"
+        android:shadowColor="#00C21F1F"
+        android:text="@string/addproduct"
+        android:textColor="#ffffff"
+        android:textIsSelectable="false"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <Button
+        android:id="@+id/btnToZone"
+        android:layout_width="133dp"
+        android:layout_height="61dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:text="Zone" />
+
+</RelativeLayout>
+
+
+
+

@@ -22,42 +22,49 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 
 import java.util.ArrayList;
 
-public class page_admin extends AppCompatActivity {
+public class manager_product extends AppCompatActivity {
 
     private SwipeMenuListView swipeListView;
     private CustomListView adapter;
     private ArrayList<String> name = new ArrayList<String>();
-    private ArrayList<String> level = new ArrayList<String>();
+    private ArrayList<String> zone = new ArrayList<String>();
     private ArrayList<String> Number = new ArrayList<String>();
     private ArrayList<String> id = new ArrayList<String>();
-    Button btn_showID;
+    private ArrayList<Integer> amount = new ArrayList<>();
+    Button btn_tozone,btn_toaddproduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_manager_product);
 
-        btn_showID=(Button)findViewById(R.id.btnToaddZone);
+       btn_toaddproduct=(Button)findViewById(R.id.btnToaddZone);
+       btn_tozone=(Button)findViewById(R.id.btnToZone);
 
-        btn_showID.setOnClickListener(new View.OnClickListener() {
+        btn_toaddproduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent test = new Intent(page_admin.this,page_showID.class);
+                Intent test = new Intent(manager_product.this,add_product.class);
+                startActivity(test);
+            }
+        });
+        btn_tozone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent test = new Intent(manager_product.this,manager_zone.class);
                 startActivity(test);
             }
         });
 
-        swipeListView = findViewById(R.id.swipeListView);
+        swipeListView = findViewById(R.id.swipeZone);
 
         //create data to listview
-        setDataListView("Supachok","10001");
-        setDataListView("Napat","20001");
-        setDataListView("Cindolara","20001");
-        setDataListView("Ichiton","10001");
-        setDataListView("Tammapon","20001");
-        setDataListView("Supanat","10001");
+        setDataListView("0200","cookie","A",20);
+        setDataListView("0400","oreo","A",20);
+        setDataListView("0600","pizza","A",20);
 
-        //create swipe menu listview
+
+
         setSwipeListView();
 
         adapter = new CustomListView(this);
@@ -65,18 +72,11 @@ public class page_admin extends AppCompatActivity {
 
     }
 
-    private void setDataListView(String a,String i) {
-        name.add(a);
-        id.add(i);
-        if(i.charAt(0)=='1'){
-        level.add("admin");
-        }
-        else if(i.charAt(0)=='2'){
-            level.add("employee");
-        }
-        else if(i.charAt(0)=='3'){
-            level.add("manager");
-        }
+    private void setDataListView(String ID,String NAME,String ZONE,int AMOUNT) {
+        id.add(ID);
+        name.add(NAME);
+        zone.add(ZONE);
+        amount.add(AMOUNT);
     }
 
     private void setSwipeListView() {
@@ -85,15 +85,15 @@ public class page_admin extends AppCompatActivity {
             @Override
             public void create(SwipeMenu menu) {
                 // create "delete" item
-                SwipeMenuItem deleteItem = new SwipeMenuItem(page_admin.this);
+                SwipeMenuItem deleteItem = new SwipeMenuItem(manager_product.this);
                 // set item background
                 deleteItem.setBackground(new ColorDrawable(getResources().getColor(R.color.red)));
                 // set item width
                 deleteItem.setWidth(170);
                 // set a icon
-                deleteItem.setIcon(R.drawable.ic_bin);
+                deleteItem.setIcon(R.drawable.ic_arrow);
                 // set item title
-                deleteItem.setTitle("Delete");
+                deleteItem.setTitle("export");
                 // set item title fontsize
                 deleteItem.setTitleSize(14);
                 // set item title font color
@@ -108,7 +108,7 @@ public class page_admin extends AppCompatActivity {
         swipeListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(final int position, SwipeMenu menu, int index) {
-                final Dialog dialog = new Dialog(page_admin.this);
+                final Dialog dialog = new Dialog(manager_product.this);
                 dialog.getWindow();
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -132,7 +132,8 @@ public class page_admin extends AppCompatActivity {
 
                         name.remove(position);
                         id.remove(position);
-                        level.remove(position);
+                        zone.remove(position);
+                        amount.remove(position);
 
                         adapter.notifyDataSetChanged();
 
@@ -179,13 +180,14 @@ public class page_admin extends AppCompatActivity {
 
             ViewHolder holder = null;
             if(convertView == null) {
-                convertView = mInflater.inflate(R.layout.custom_listview, null);
+                convertView = mInflater.inflate(R.layout.custom_manag_product, null);
                 holder = new ViewHolder();
 
                 holder.header = (TextView) convertView.findViewById(R.id.text_header);
                 holder.id = (TextView) convertView.findViewById(R.id.text_id);
-                holder.level = (TextView) convertView.findViewById(R.id.text_zone);
+                holder.zone = (TextView) convertView.findViewById(R.id.text_zone);
                 holder.Number = (TextView) convertView.findViewById(R.id.text_number);
+                holder.amount = (TextView) convertView.findViewById(R.id.am);
 
                 convertView.setTag(holder);
             }
@@ -193,21 +195,21 @@ public class page_admin extends AppCompatActivity {
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            holder.header.setText(name.get(position));
-            holder.level.setText(level.get(position));
-            holder.id.setText(id.get(position));
-
+            holder.header.setText(String.valueOf("Name : "+name.get(position)));
+            holder.zone.setText(String.valueOf("Zone : "+zone.get(position)));
+            holder.id.setText(String.valueOf("ID : "+id.get(position)));
             holder.Number.setText(String.valueOf("No. " + position));
-            //holder.image.setImageResource(photo.get(position));
+            holder.amount.setText(String.valueOf("Amount "+amount.get(position)));
 
             return convertView;
         }
     }
     private class ViewHolder {
         TextView header;
-        TextView level;
+        TextView zone;
         TextView id;
         TextView Number;
+        TextView amount;
     }
 
 

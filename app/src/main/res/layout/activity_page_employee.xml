@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ListView
-        android:id="@+id/listproduct"
+        android:id="@+id/listzone"
         android:fontFamily="@font/segoe"
         android:layout_width="400dp"
         android:layout_height="560dp"
@@ -20,7 +20,7 @@
     </ListView>
 
     <Button
-        android:id="@+id/delete"
+        android:id="@+id/btn_addzone"
         android:fontFamily="@font/segoe"
         android:layout_width="172dp"
         android:layout_height="62dp"

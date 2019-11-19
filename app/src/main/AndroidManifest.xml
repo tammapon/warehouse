@@ -11,16 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".add_product"></activity>
+        <activity android:name=".product_export" />
+        <activity android:name=".manager_product" />
+        <activity android:name=".page_add_zone" />
+        <activity android:name=".manager_zone" />
         <activity
             android:name=".mannagerfunc"
             android:label="@string/title_activity_mannagerfunc"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".page_showID" />
         <activity android:name=".additem" />
         <activity android:name=".Mainactivity_start" />
         <activity android:name=".page_levelSelect" />
         <activity android:name=".page_register" />
-        <activity android:name=".page_manager" />
         <activity android:name=".page_admin" />
         <activity android:name=".page_login" />
         <activity android:name=".MainActivity">
