@@ -18,14 +18,14 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/ic_account_circle"
-            android:padding="2dp"
+            android:padding="1dp"
             android:scaleType="fitXY" />
 
         <RelativeLayout
             android:id="@+id/spaceText"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
+            android:layout_weight="0.5"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp">

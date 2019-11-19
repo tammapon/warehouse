@@ -7,21 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".page_levelSelect">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="166dp"
-        android:layout_height="48dp"
-        android:background="@drawable/button_opacity"
-        android:fontFamily="@font/segoe"
-        android:textColor="#000000"
-        android:text=" Select level"
-        android:ellipsize="middle"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.757" />
 
     <EditText
         android:id="@+id/inputlevel"
@@ -42,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintVertical_bias="0.454" />
 
     <Button
         android:id="@+id/btn_level"

@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home_2"
     tools:context=".page_showID">
 
     <TextView
         android:id="@+id/textView6"
+        android:fontFamily="@font/segoe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="id to add Manager"
@@ -19,6 +21,7 @@
 
     <TextView
         android:id="@+id/textView"
+        android:fontFamily="@font/segoe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="for show id"
@@ -26,10 +29,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.094" />
+        app:layout_constraintVertical_bias="0.195" />
 
     <Button
         android:id="@+id/btn_back_showid"
+        android:fontFamily="@font/segoe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="back"
@@ -42,6 +46,7 @@
 
     <TextView
         android:id="@+id/textView5"
+        android:fontFamily="@font/segoe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="id to add Employee"
