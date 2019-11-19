@@ -15,7 +15,8 @@
             android:name=".mannagerfunc"
             android:label="@string/title_activity_mannagerfunc"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".page_showID" />
+        <activity android:name=".page_showID"
+            android:theme="@style/AppTheme.SlidrActivity"/>
         <activity android:name=".additem" />
         <activity android:name=".Mainactivity_start" />
         <activity android:name=".page_levelSelect" />
@@ -43,7 +44,7 @@
         <activity
             android:name=".FullScannerActivity"
             android:label="        Scan import product"
-            android:theme="@style/AppOverlayTheme"
+            android:theme="@style/AppTheme.SlidrActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.UI_OPTIONS"
@@ -52,7 +53,7 @@
         <activity
             android:name=".ScanOutActivity"
             android:label="        Scan export product"
-            android:theme="@style/AppOverlayTheme"
+            android:theme="@style/AppTheme.SlidrActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.UI_OPTIONS"
@@ -61,3 +62,4 @@
     </application>
 
 </manifest>
+<!--    android:theme="@style/AppOverlayTheme"-->

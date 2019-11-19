@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/register1"
     android:layout_height="match_parent"
+    android:background="@drawable/register1"
     tools:context=".page_register">
 
     <EditText
         android:id="@+id/id_regis"
         android:layout_width="317dp"
         android:layout_height="46dp"
-        android:layout_marginTop="275dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/button_white"
         android:drawableStart="@drawable/personadd"
         android:drawableLeft="@drawable/white"
@@ -22,17 +22,14 @@
         android:inputType="textEmailAddress"
         android:textColor="#000000"
         android:textColorHint="#808080"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/pass_regis"
+        tools:layout_editor_absoluteX="47dp" />
 
     <EditText
         android:id="@+id/pass_regis"
         android:layout_width="317dp"
         android:layout_height="46dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/button_white"
         android:drawableStart="@drawable/log"
         android:drawableLeft="@drawable/log"
@@ -43,17 +40,14 @@
         android:inputType="textPassword"
         android:textColor="#000000"
         android:textColorHint="#808080"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/name_regis"
+        tools:layout_editor_absoluteX="49dp" />
 
     <EditText
         android:id="@+id/name_regis"
         android:layout_width="317dp"
         android:layout_height="46dp"
-        android:layout_marginTop="425dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/button_white"
         android:drawableStart="@drawable/name"
         android:drawableLeft="@drawable/name"
@@ -64,17 +58,13 @@
         android:inputType="textEmailAddress"
         android:textColor="#000000"
         android:textColorHint="#808080"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/mail_regis"
+        tools:layout_editor_absoluteX="47dp" />
 
     <EditText
         android:id="@+id/mail_regis"
         android:layout_width="317dp"
         android:layout_height="46dp"
-        android:layout_marginTop="500dp"
         android:background="@drawable/button_white"
         android:drawableStart="@drawable/ic_mail_outline_black_24dp"
         android:drawableLeft="@drawable/ic_mail_outline_black_24dp"
@@ -84,66 +74,61 @@
         android:hint="Email Address"
         android:inputType="textEmailAddress"
         android:textColorHint="#808080"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/phone_regis"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04000002" />
+        app:layout_constraintVertical_bias="0.965"
+        tools:layout_editor_absoluteX="47dp" />
 
     <EditText
         android:id="@+id/phone_regis"
         android:layout_width="317dp"
         android:layout_height="46dp"
-        android:layout_marginTop="575dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/button_white"
         android:drawableStart="@drawable/phone"
         android:drawableLeft="@drawable/phone"
         android:drawablePadding="5dp"
         android:ems="10"
-        android:fontFamily="@font/segoe"
 
+        android:fontFamily="@font/segoe"
         android:hint="Phone number"
         android:inputType="textEmailAddress"
         android:textColorHint="#808080"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04000002" />
+        app:layout_constraintBottom_toTopOf="@+id/checkBox_admin"
+        tools:layout_editor_absoluteX="49dp" />
 
     <CheckBox
         android:id="@+id/checkBox_admin"
         android:layout_width="152dp"
         android:layout_height="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/button_opacity"
         android:fontFamily="@font/segoe"
         android:text="@string/for_admin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_regis"
-        app:layout_constraintVertical_bias="0.055" />
+        app:layout_constraintBottom_toTopOf="@+id/button_create_regis"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
         android:id="@+id/checkBox_manager_employee"
         android:layout_width="152dp"
         android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_opacity"
         android:fontFamily="@font/segoe"
         android:text="@string/for_manag_employ"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.818"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone_regis"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_admin"
+        app:layout_constraintTop_toBottomOf="@+id/phone_regis" />
 
     <Button
         android:id="@+id/button_create_regis"
         android:layout_width="317dp"
         android:layout_height="46dp"
-        android:layout_marginTop="650dp"
         android:background="@drawable/button_bg"
         android:drawablePadding="5dp"
         android:ems="10"
@@ -153,11 +138,7 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.542" />
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="698dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

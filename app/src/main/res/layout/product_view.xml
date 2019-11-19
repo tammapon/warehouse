@@ -21,19 +21,6 @@
         android:text="1" />
 
     <TextView
-        android:id="@+id/priceproduct"
-        android:fontFamily="@font/segoe"
-        android:layout_width="123dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/idproduct"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="5dp"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_toRightOf="@+id/imageView"
-        android:text="1000" />
-
-    <TextView
         android:id="@+id/nameproduct"
         android:layout_width="143dp"
         android:layout_height="wrap_content"
@@ -71,4 +58,17 @@
         android:text="Export"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp" />
+
+    <TextView
+        android:id="@+id/priceproduct"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idproduct"
+        android:layout_marginStart="96dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:fontFamily="@font/segoe"
+        android:text="1000" />
 </RelativeLayout>

@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/frist"
     android:layout_height="match_parent"
+    android:background="@drawable/frist"
     tools:context=".page_levelSelect">
 
 
@@ -12,7 +12,6 @@
         android:id="@+id/inputlevel"
         android:layout_width="317dp"
         android:layout_height="46dp"
-        android:layout_marginTop="500dp"
         android:background="@drawable/button_white"
         android:drawableStart="@drawable/log"
         android:drawableLeft="@drawable/log"
@@ -23,11 +22,9 @@
         android:inputType="textEmailAddress"
         android:textColor="#000000"
         android:textColorHint="#808080"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.454" />
+        tools:layout_editor_absoluteY="497dp" />
 
     <Button
         android:id="@+id/btn_level"
@@ -46,5 +43,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputlevel"
-        app:layout_constraintVertical_bias="0.329" />
+        app:layout_constraintVertical_bias="0.442" />
 </androidx.constraintlayout.widget.ConstraintLayout>
