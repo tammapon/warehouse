@@ -11,6 +11,7 @@
         android:id="@+id/id_regis"
         android:layout_width="317dp"
         android:layout_height="46dp"
+        android:layout_marginTop="200dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_white"
         android:drawableStart="@drawable/personadd"
@@ -23,12 +24,15 @@
         android:textColor="#000000"
         android:textColorHint="#808080"
         app:layout_constraintBottom_toTopOf="@+id/pass_regis"
-        tools:layout_editor_absoluteX="47dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/pass_regis"
         android:layout_width="317dp"
         android:layout_height="46dp"
+        android:layout_marginTop="225dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_white"
         android:drawableStart="@drawable/log"
@@ -41,12 +45,15 @@
         android:textColor="#000000"
         android:textColorHint="#808080"
         app:layout_constraintBottom_toTopOf="@+id/name_regis"
-        tools:layout_editor_absoluteX="49dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/name_regis"
         android:layout_width="317dp"
         android:layout_height="46dp"
+        android:layout_marginTop="250dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_white"
         android:drawableStart="@drawable/name"
@@ -59,7 +66,9 @@
         android:textColor="#000000"
         android:textColorHint="#808080"
         app:layout_constraintBottom_toTopOf="@+id/mail_regis"
-        tools:layout_editor_absoluteX="47dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/mail_regis"
