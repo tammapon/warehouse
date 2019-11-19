@@ -24,12 +24,12 @@ public class page_register extends AppCompatActivity {
     //database
     public DatabaseReference myRef;
 
-    Boolean check_A = false,check_B  =true;
+    Boolean check_A = false,check_B  = true;
     CheckBox checkbox_A,checkbox_ME;
     EditText id_regis,pass_regis,name_regis,mail_regis,phone_regis;
     Button create_register;
-    String bufferName,bufferPass,bufferphone,buffermail;
-    public static Double buffercode=0.0;
+    public static String bufferName,bufferPass,bufferphone,buffermail;
+    public static Integer buffercode=0;
     public static String bufferID;
 
     @Override
@@ -70,10 +70,10 @@ public class page_register extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             String x = dataSnapshot.child("Databuffer").child("currentID").getValue().toString();
-                            buffercode = Double.valueOf(x);
+                            buffercode = Integer.valueOf(x);
                             myRef.child("testcode").child("test").setValue(buffercode);
-                            myRef.child(bufferID).child("data").child("ID").setValue(buffercode);
-                            buffercode = buffercode+1.0;
+                            myRef.child(bufferID).child("ID").setValue("10B"+buffercode.toString());
+                            buffercode = buffercode+1;
                             myRef.child("Databuffer").child("currentID").setValue(buffercode);
                         }
 
@@ -87,6 +87,8 @@ public class page_register extends AppCompatActivity {
                     myRef.child(bufferID).child("data").child("password").setValue(bufferPass);
                     myRef.child(bufferID).child("data").child("email").setValue(buffermail);
                     myRef.child(bufferID).child("data").child("phone").setValue(bufferphone);
+                    myRef.child(bufferID).child("Databuffer").child("currentemID").setValue(0);
+                    myRef.child(bufferID).child("Databuffer").child("currentmanegerID").setValue(0);
 
                     //
                     startActivity(new Intent(page_register.this,page_login.class));
@@ -94,11 +96,12 @@ public class page_register extends AppCompatActivity {
                 }
                 else if (check_B.equals(true)){
                     //database//
+                    /*
                     myRef.child("bufferUser").child(bufferID).child("name").setValue(bufferName);
                     myRef.child("bufferUser").child(bufferID).child("password").setValue(bufferPass);
                     myRef.child("bufferUser").child(bufferID).child("email").setValue(buffermail);
                     myRef.child("bufferUser").child(bufferID).child("phone").setValue(bufferphone);
-
+                    */
                     //
                     startActivity(new Intent(page_register.this,page_levelSelect.class));
                 }
