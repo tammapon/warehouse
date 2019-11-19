@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class page_login extends AppCompatActivity {
     EditText id_login,pass_login;
     Button access_login,register_login;
-    String level = "A";
+    String level = "B";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class page_login extends AppCompatActivity {
                         startActivity(new Intent(page_login.this,page_admin.class));
                     }
                     else if(level.equals("B")){
-                        startActivity(new Intent(page_login.this,page_manager.class));
+                        startActivity(new Intent(page_login.this,mannagerfunc.class));
                     }
                     else if(level.equals("C")){
                         startActivity(new Intent(page_login.this,page_employee.class));

@@ -16,7 +16,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home"></string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
@@ -53,4 +53,6 @@
     <string name="button">Button</string>
     <string name="home">Home</string>
     <bool name="cameraPreviewShouldFillView">true</bool>
+    <string name="title_activity_manyfunc"></string>
+    <string name="title_activity_mannagerfunc"></string>
 </resources>
