@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.r0adkll.slidr.Slidr;
+
 public class page_showID extends AppCompatActivity {
     Button btn_back;
 
@@ -24,5 +26,6 @@ public class page_showID extends AppCompatActivity {
                 startActivity(test);
             }
         });
+        Slidr.attach(this);
     }
 }

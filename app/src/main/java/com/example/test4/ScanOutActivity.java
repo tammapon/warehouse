@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.r0adkll.slidr.Slidr;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public class ScanOutActivity extends BaseScannerActivity implements MessageDialo
         mScannerView = new ZXingScannerView(this);
         setupFormats();
         contentFrame.addView(mScannerView);
+        Slidr.attach(this);
     }
 
     @Override
