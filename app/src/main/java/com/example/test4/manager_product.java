@@ -114,10 +114,10 @@ public class manager_product extends AppCompatActivity {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.setContentView(R.layout.dialog_data);
                 TextView dialog_title = (TextView)dialog.findViewById(R.id.dialog_title);
-                dialog_title.setText(String.valueOf("Delete List"));
+                dialog_title.setText(String.valueOf("Export Prouct"));
 
                 TextView dialog_description = (TextView)dialog.findViewById(R.id.dialog_description);
-                dialog_description.setText(String.valueOf("You want delete this"+name.get(position)+"?"));
+                dialog_description.setText(String.valueOf("You want export this "+name.get(position)+"?"));
 
                 Button buttonCancel = (Button)dialog.findViewById(R.id.buttonCancel);
                 buttonCancel.setOnClickListener(new View.OnClickListener() {
@@ -195,11 +195,11 @@ public class manager_product extends AppCompatActivity {
                 holder = (ViewHolder) convertView.getTag();
             }
 
-            holder.header.setText(String.valueOf("Name : "+name.get(position)));
-            holder.zone.setText(String.valueOf("Zone : "+zone.get(position)));
-            holder.id.setText(String.valueOf("ID : "+id.get(position)));
-            holder.Number.setText(String.valueOf("No. " + position));
-            holder.amount.setText(String.valueOf("Amount "+amount.get(position)));
+            holder.header.setText(String.valueOf("Name: "+name.get(position)));
+            holder.zone.setText(String.valueOf("Zone: "+zone.get(position)));
+            holder.id.setText(String.valueOf("ID: "+id.get(position)));
+            holder.Number.setText(String.valueOf("No: " + position));
+            holder.amount.setText(String.valueOf("Amount: "+amount.get(position)));
 
             return convertView;
         }
