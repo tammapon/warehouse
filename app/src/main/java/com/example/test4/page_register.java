@@ -24,7 +24,7 @@ public class page_register extends AppCompatActivity {
     //database
     public DatabaseReference myRef;
 
-    Boolean check_A = false,check_B  = true;
+    Boolean check_A = false,check_B  = false;
     CheckBox checkbox_A,checkbox_ME;
     EditText id_regis,pass_regis,name_regis,mail_regis,phone_regis;
     Button create_register;
