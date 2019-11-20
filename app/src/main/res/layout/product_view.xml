@@ -58,7 +58,7 @@
         android:layout_marginTop="11dp"
         android:contentDescription="@string/todo"
         android:fontFamily="@font/segoe"
-        app:srcCompat="@drawable/demon1" />
+        app:srcCompat="@drawable/employee" />
 
     <TextView
         android:id="@+id/tx_type"
