@@ -20,7 +20,8 @@
             android:name=".mannagerfunc"
             android:label="@string/title_activity_mannagerfunc"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".page_showID" />
+        <activity android:name=".page_showID"
+            android:theme="@style/AppTheme.SlidrActivityTheme"/>
         <activity android:name=".additem" />
         <activity android:name=".Mainactivity_start" />
         <activity android:name=".page_levelSelect" />
