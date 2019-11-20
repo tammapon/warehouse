@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/frist"
-    tools:context=".page_levelSelect">
+    tools:context=".page_levelSelect"
+    tools:layout_editor_absoluteY="25dp">
 
 
     <EditText
         android:id="@+id/inputlevel"
         android:layout_width="317dp"
         android:layout_height="46dp"
+        android:layout_marginBottom="108dp"
         android:background="@drawable/button_white"
         android:drawableStart="@drawable/log"
         android:drawableLeft="@drawable/log"
@@ -22,14 +24,15 @@
         android:inputType="textEmailAddress"
         android:textColor="#000000"
         android:textColorHint="#808080"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="497dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_level"
         android:layout_width="317dp"
         android:layout_height="46dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/button_bg"
         android:drawablePadding="5dp"
         android:ems="10"
@@ -43,5 +46,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputlevel"
-        app:layout_constraintVertical_bias="0.442" />
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
