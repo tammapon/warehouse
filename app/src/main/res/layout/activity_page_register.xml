@@ -24,10 +24,9 @@
         android:textColorHint="#808080"
         app:layout_constraintBottom_toTopOf="@+id/pass_regis"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.958" />
 
     <EditText
         android:id="@+id/pass_regis"
@@ -46,10 +45,9 @@
         android:textColorHint="#808080"
         app:layout_constraintBottom_toTopOf="@+id/name_regis"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.769" />
+        app:layout_constraintVertical_bias="0.868" />
 
     <EditText
         android:id="@+id/name_regis"
@@ -71,7 +69,7 @@
         app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834" />
+        app:layout_constraintVertical_bias="0.878" />
 
     <EditText
         android:id="@+id/mail_regis"
@@ -91,7 +89,7 @@
         app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
+        app:layout_constraintVertical_bias="0.955" />
 
     <EditText
         android:id="@+id/phone_regis"
@@ -112,7 +110,7 @@
         app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.803" />
 
     <CheckBox
         android:id="@+id/checkBox_admin"
@@ -132,16 +130,15 @@
         android:id="@+id/checkBox_manager_employee"
         android:layout_width="152dp"
         android:layout_height="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="1dp"
         android:background="@drawable/button_opacity"
         android:fontFamily="@font/segoe"
         android:text="@string/for_manag_employ"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox_admin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.146"
-        app:layout_constraintStart_toEndOf="@+id/checkBox_admin"
-        app:layout_constraintTop_toBottomOf="@+id/phone_regis"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/checkBox_admin" />
 
     <Button
         android:id="@+id/button_create_regis"
