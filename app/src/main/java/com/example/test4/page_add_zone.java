@@ -6,12 +6,15 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.r0adkll.slidr.Slidr;
+
 public class page_add_zone extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_add_zone);
+        Slidr.attach(this);
 
     }
 
@@ -24,5 +27,4 @@ public class page_add_zone extends AppCompatActivity {
         Intent next = new Intent(this, manager_zone.class);
         startActivity(next);
     }
-
 }

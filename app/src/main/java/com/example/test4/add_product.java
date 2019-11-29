@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.r0adkll.slidr.Slidr;
+
 public class add_product extends AppCompatActivity {
     Button b2;
 
@@ -24,6 +26,7 @@ public class add_product extends AppCompatActivity {
                 startActivity(new Intent(add_product.this,manager_product.class));
             }
         });
+        Slidr.attach(this);
     }
 
 

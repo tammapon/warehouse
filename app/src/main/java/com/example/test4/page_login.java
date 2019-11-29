@@ -19,8 +19,8 @@ public class page_login extends AppCompatActivity {
 
     EditText id_login,pass_login;
     Button access_login,register_login;
-    String level = "B";
-    String ID,pass,ID_db,pass_db;
+    String level = "C";
+    String ID,pass,ID_db,pass_b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

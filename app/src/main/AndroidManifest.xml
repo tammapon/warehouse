@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".add_product"></activity>
+        <activity android:name=".add_product"
+            android:theme="@style/AppTheme.SlidrActivityTheme"></activity>
         <activity android:name=".product_export" />
         <activity android:name=".manager_product" />
-        <activity android:name=".page_add_zone" />
+        <activity android:name=".page_add_zone"
+            android:theme="@style/AppTheme.SlidrActivityTheme"/>
         <activity android:name=".manager_zone" />
         <activity
             android:name=".mannagerfunc"
@@ -48,8 +50,9 @@
         <activity
             android:name=".FullScannerActivity"
             android:label="        Scan import product"
-            android:theme="@style/AppOverlayTheme"
+            android:theme="@style/AppTheme.SlidrActivityTheme"
             android:uiOptions="splitActionBarWhenNarrow">
+            <!--android:theme="@style/AppOverlayTheme"-->
             <meta-data
                 android:name="android.support.UI_OPTIONS"
                 android:value="splitActionBarWhenNarrow" />
@@ -57,7 +60,7 @@
         <activity
             android:name=".ScanOutActivity"
             android:label="        Scan export product"
-            android:theme="@style/AppOverlayTheme"
+            android:theme="@style/AppTheme.SlidrActivityTheme"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data
                 android:name="android.support.UI_OPTIONS"
