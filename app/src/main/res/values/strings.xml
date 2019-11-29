@@ -65,4 +65,5 @@
     <string name="export">Export</string>
     <string name="todo">TODO</string>
     <string name="add_team">Add Team</string>
+    <string name="refresh_button">Refresh</string>
 </resources>
