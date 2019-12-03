@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -42,7 +43,7 @@ public class page_employee extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_employee);
         setupToolbar();
-        ImageView refresh = (ImageView)findViewById(R.id.refresh3);
+        Button refresh = (Button)findViewById(R.id.refresh3);
         listProduct = new ArrayList<>();
 
         refresh.setOnClickListener(new View.OnClickListener() {

@@ -67,7 +67,7 @@ public class manager_product extends AppCompatActivity {
         });
 
         swipeListView = findViewById(R.id.swipeZone);
-        ImageView refresh = (ImageView)findViewById(R.id.refresh);
+        Button refresh = (Button) findViewById(R.id.refresh);
 
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override

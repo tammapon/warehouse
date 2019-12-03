@@ -49,7 +49,7 @@ public class page_admin extends AppCompatActivity {
 
         //database
 
-        ImageView refresh = (ImageView)findViewById(R.id.refresh4);
+        Button refresh = (Button) findViewById(R.id.refresh4);
         btn_showID=(Button)findViewById(R.id.btnToaddZone);
 
         btn_showID.setOnClickListener(new View.OnClickListener() {
