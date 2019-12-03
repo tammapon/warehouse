@@ -99,7 +99,7 @@ public class page_login extends AppCompatActivity {
                                                 startActivity(new Intent(page_login.this,manager_product.class));
                                                 break aa;
                                             }
-                                            else if(IDcode[0].equals("10")){
+                                            else if(IDcode[0].equals("30")){
                                                 Log.e("xxx","scscscsc3333");
                                                 startActivity(new Intent(page_login.this,page_employee.class));
                                                 break aa;
