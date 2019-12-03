@@ -8,15 +8,25 @@
         android:layout_width="wrap_content"
         android:layout_height="80dp">
     </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:text="Values of the warehouse:"
         android:textSize="20dp" />
-    <Button
-        android:id="@+id/btncancle"
-        android:layout_width="wrap_content"
-        android:text="cancle"
-        android:layout_height="50dp"/>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="70dp"></LinearLayout>
+        <Button
+            android:id="@+id/btncancle"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="cancle" />
+    </LinearLayout>
+
 </LinearLayout>
