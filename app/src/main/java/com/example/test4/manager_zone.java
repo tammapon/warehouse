@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.r0adkll.slidr.Slidr;
-
 import java.util.ArrayList;
 
 
@@ -69,20 +67,20 @@ public class manager_zone extends AppCompatActivity {
         listViewProduct.setAdapter(productListViewAdapter);
 
     }
-    public void ShowPopup(View v){
-
-        Button btncancle;
-        myDialog.setContentView(R.layout.windowpopup);
-        btncancle = (Button) myDialog.findViewById(R.id.btncancle);
-        btncancle.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                myDialog.dismiss();
-            }
-        });
-        myDialog.show();
-    }
-
+//    public void ShowPopup(View v){
+//
+//        Button btncancle;
+//        myDialog.setContentView(R.layout.windowpopup);
+//        btncancle = (Button) myDialog.findViewById(R.id.btncancle);
+//        btncancle.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                myDialog.dismiss();
+//            }
+//        });
+//        myDialog.show();
+//    }
+//
 
 
     private void addZone(String name,int amount){
