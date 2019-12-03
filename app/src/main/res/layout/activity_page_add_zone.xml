@@ -16,37 +16,49 @@
         android:text="@string/ok"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.537"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
+        app:layout_constraintVertical_bias="0.876" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="415dp"
-        android:layout_height="625dp"
+        android:layout_width="413dp"
+        android:layout_height="242dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529"
+        app:layout_constraintVertical_bias="0.189"
         app:srcCompat="@drawable/b_zone" />
 
     <EditText
         android:id="@+id/az_bar"
         android:layout_width="176dp"
         android:layout_height="53dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginLeft="144dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="132dp"
         android:ems="10"
         android:hint="       Name:Zone"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/backok"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.573" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="60dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="132dp"
+        app:layout_constraintBottom_toTopOf="@+id/backok"
+        app:layout_constraintEnd_toStartOf="@+id/az_bar"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/az_bar"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_folder_special_black_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
