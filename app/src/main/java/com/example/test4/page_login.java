@@ -19,7 +19,7 @@ public class page_login extends AppCompatActivity {
 
     EditText id_login,pass_login;
     Button access_login,register_login;
-    String level = "A";
+    String level = "B";
     String ID,pass,ID_db,pass_b;
 
     @Override
