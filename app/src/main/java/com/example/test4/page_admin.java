@@ -143,6 +143,7 @@ public class page_admin extends AppCompatActivity {
         }
         else{
             level.add("manager");
+            level.add("manager");
         }
     }
 
@@ -196,7 +197,8 @@ public class page_admin extends AppCompatActivity {
                 Button buttonOK = (Button)dialog.findViewById(R.id.buttonOK);
                 buttonOK.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
-
+                        myRef = FirebaseDatabase.getInstance().getReference();
+                        myRef.child("Lnwklui").child("user").child(name.get(position)).removeValue();
                         name.remove(position);
                         id.remove(position);
                         level.remove(position);

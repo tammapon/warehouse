@@ -5,20 +5,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -32,7 +42,7 @@ public class manager_product extends AppCompatActivity {
     private ArrayList<String> id = new ArrayList<String>();
     private ArrayList<Integer> amount = new ArrayList<>();
     Button btn_tozone,btn_toaddproduct;
-
+    private DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,11 +67,59 @@ public class manager_product extends AppCompatActivity {
         });
 
         swipeListView = findViewById(R.id.swipeZone);
+        ImageView refresh = (ImageView)findViewById(R.id.refresh);
 
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myRef = FirebaseDatabase.getInstance().getReference().child("Lnwklui").child("warehouse").child("A").child("item");
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        ArrayList<String> passNM = new ArrayList<String>();
+                        ArrayList<String> passID = new ArrayList<String>();
+                        ArrayList<Integer> passAM = new ArrayList<Integer>();
+                        for(DataSnapshot child:dataSnapshot.getChildren()){
+                            passNM.add(child.child("name").getValue().toString());
+                            passID.add(child.child("ID").getValue().toString());
+                            passAM.add(Integer.parseInt(child.child("amount").getValue().toString()));
+                        }
+//                        Log.e("==x n",passNM.toString());
+//                        Log.e("==x i",passID.toString());
+//                        Log.e("==x a",passAM.toString());
+
+                        Intent intent = getIntent();
+                        finish();
+                        intent.putExtra("passNM",passNM);
+                        intent.putExtra("passAM",passAM);
+                        intent.putExtra("passID",passID);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
         //create data to listview
-        setDataListView("0200","cookie","A",20);
-        setDataListView("0400","oreo","A",20);
-        setDataListView("0600","pizza","A",20);
+        ArrayList<String> DBNM = (ArrayList<String>)getIntent().getSerializableExtra("passNM");
+        ArrayList<Integer> DBAM = (ArrayList<Integer>)getIntent().getSerializableExtra("passAM");
+        ArrayList<String> DBID = (ArrayList<String>)getIntent().getSerializableExtra("passID");
+        if(DBNM != null){
+//            setDataListView("0200","cookie","A",20);
+//            setDataListView("0400","oreo","A",20);
+//            setDataListView("0600","pizza","A",20);
+            long c = DBNM.size();
+            for(int a=0;a< c;a++){
+                String id = DBID.get(a);
+                String name = DBNM.get(a);
+                int amount = DBAM.get(a);
+                setDataListView(id,name,"A",amount);
+            }
+        }
+
 
 
 
@@ -130,6 +188,30 @@ public class manager_product extends AppCompatActivity {
                 buttonOK.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
 
+                        myRef = FirebaseDatabase.getInstance().getReference().child("Lnwklui").child("warehouse").child("A");
+                        myRef.child("item").child(name.get(position)).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                String ID = dataSnapshot.child("ID").getValue().toString();
+                                String name = dataSnapshot.child("name").getValue().toString();
+                                String amount = dataSnapshot.child("amount").getValue().toString();
+
+                                DatabaseReference newMyRef;
+                                newMyRef = FirebaseDatabase.getInstance().getReference();
+                                newMyRef = newMyRef.child("Lnwklui").child("warehouse").child("A").child("bufferitem");
+                                newMyRef.child(name).child("ID").setValue(ID);
+                                newMyRef.child(name).child("name").setValue(name);
+                                newMyRef.child(name).child("amount").setValue(amount);
+                                newMyRef.child(name).child("status").setValue("Export");
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+                        myRef.child("item").child(name.get(position)).removeValue();
                         name.remove(position);
                         id.remove(position);
                         zone.remove(position);

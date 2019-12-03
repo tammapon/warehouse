@@ -4,17 +4,26 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -23,7 +32,7 @@ public class page_employee extends AppCompatActivity {
 
     private static final int ZXING_CAMERA_PERMISSION = 1;
     private Class<?> mClss;
-
+    private DatabaseReference myRef;
     ArrayList<Product> listProduct;
     ProductListViewAdapter productListViewAdapter;
     ListView listViewProduct;
@@ -33,22 +42,64 @@ public class page_employee extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_employee);
         setupToolbar();
-
+        ImageView refresh = (ImageView)findViewById(R.id.refresh3);
         listProduct = new ArrayList<>();
 
-        addProduct("Export",12303,"Coke",1);
-        addProduct("Import",10111,"cookie",5);
-        addProduct("Export",12111,"pizza",10);
-        addProduct("Export",13111,"fish",2);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myRef = FirebaseDatabase.getInstance().getReference();
+                myRef = myRef.child("Lnwklui").child("warehouse").child("A").child("bufferitem");
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        ArrayList<String> name = new ArrayList<String>();
+                        ArrayList<String> ID = new ArrayList<String>();
+                        ArrayList<String> Amount = new ArrayList<String>();
+                        ArrayList<String> status = new ArrayList<String>();
+                        for (DataSnapshot child:dataSnapshot.getChildren()){
+                            name.add(child.child("name").getValue().toString());
+                            ID.add(child.child("ID").getValue().toString());
+                            Amount.add(child.child("amount").getValue().toString());
+                            status.add(child.child("status").getValue().toString());
+                        }
+                        Log.e("==x",status.toString());
+
+                        Intent intent = getIntent();
+                        intent.putExtra("passN",name);
+                        intent.putExtra("passI",ID);
+                        intent.putExtra("passA",Amount);
+                        intent.putExtra("passS",status);
+                        finish();
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        });
+        ArrayList<String> item = (ArrayList<String>)getIntent().getSerializableExtra("passN");
+        if(item!=null) {
+            ArrayList<String> id = (ArrayList<String>)getIntent().getSerializableExtra("passI");
+            ArrayList<String> amount = (ArrayList<String>)getIntent().getSerializableExtra("passA");
+            ArrayList<String> status = (ArrayList<String>)getIntent().getSerializableExtra("passS");
+            for (int a = 0; a < item.size();a++){
+                addProduct(status.get(a), Integer.valueOf(id.get(a)), item.get(a), Integer.valueOf(id.get(a)));
+            }
+//            addProduct("Export", 12303, "Coke", 1);
+//            addProduct("Import", 10111, "cookie", 5);
+//            addProduct("Export", 12111, "pizza", 10);
+//            addProduct("Export", 13111, "fish", 2);
 
 
-
-
-
-        listViewProduct = findViewById(R.id.listzone);
-        productListViewAdapter = new ProductListViewAdapter(listProduct);
-        listViewProduct.setAdapter(productListViewAdapter);
-
+            listViewProduct = findViewById(R.id.listzone);
+            productListViewAdapter = new ProductListViewAdapter(listProduct);
+            listViewProduct.setAdapter(productListViewAdapter);
+        }
     }
 
     public void setupToolbar() {
