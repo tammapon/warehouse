@@ -2,9 +2,11 @@ package com.example.test4;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -21,7 +23,8 @@ public class manager_zone extends AppCompatActivity {
     ProductListViewAdapter productListViewAdapter;
     ListView listViewProduct;
     Dialog myDialog;
-    Button btn_toproduct,btn_toaddzone;
+    Button btn_toproduct,btn_toaddzone,btn_show;
+    private int ValueOfWarehouse = 5000000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,29 @@ public class manager_zone extends AppCompatActivity {
 
         btn_toaddzone=(Button)findViewById(R.id.btnToaddZone);
         btn_toproduct=(Button)findViewById(R.id.btnToProduct);
+        btn_show=(Button)findViewById(R.id.money2);
+
+        btn_show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(manager_zone.this);
+                dialog.getWindow();
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialog.setContentView(R.layout.windowpopup);
+                Button ok = (Button)dialog.findViewById(R.id.button_value);
+                TextView show_value = (TextView)dialog.findViewById(R.id.text_data);
+                show_value.setText(String.valueOf("         Values : "+ ValueOfWarehouse+" Bath."));
+
+                ok.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+
+                dialog.show();
+            }
+        });
 
         btn_toproduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,20 +93,6 @@ public class manager_zone extends AppCompatActivity {
         listViewProduct.setAdapter(productListViewAdapter);
 
     }
-//    public void ShowPopup(View v){
-//
-//        Button btncancle;
-//        myDialog.setContentView(R.layout.windowpopup);
-//        btncancle = (Button) myDialog.findViewById(R.id.btncancle);
-//        btncancle.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                myDialog.dismiss();
-//            }
-//        });
-//        myDialog.show();
-//    }
-//
 
 
     private void addZone(String name,int amount){
