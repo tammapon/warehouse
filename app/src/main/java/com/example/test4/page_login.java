@@ -29,6 +29,7 @@ public class page_login extends AppCompatActivity {
     String level = "B";
     String ID,pass,ID_db,pass_b;
     public static String username=" ";
+    public static String userID=" ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //database
@@ -77,6 +78,7 @@ public class page_login extends AppCompatActivity {
                                 if(dataSnapshot.child(ID).child("data").child("password").getValue().toString().equals(pass)){
                                     Log.e("xxx","scscscsc1111");
                                     username=childSnapshot.getKey();
+                                    userID=dataSnapshot.child(childSnapshot.getKey()).child("ID").getValue().toString().split("B")[1];
                                     startActivity(new Intent(page_login.this,page_admin.class));
                                     ck+=1;
                                     break aa;
@@ -99,6 +101,7 @@ public class page_login extends AppCompatActivity {
                                             if (IDcode[0].equals("20")){
                                                 Log.e("xxx","scscscsc2222");
                                                 username=childSnapshot.getKey();
+                                                userID=dataSnapshot.child(childSnapshot.getKey()).child("ID").getValue().toString().split("B")[1];
                                                 startActivity(new Intent(page_login.this,manager_product.class));
                                                 ck+=1;
                                                 break aa;
@@ -106,6 +109,7 @@ public class page_login extends AppCompatActivity {
                                             else if(IDcode[0].equals("30")){
                                                 Log.e("xxx","scscscsc3333");
                                                 username=childSnapshot.getKey();
+                                                userID=dataSnapshot.child(childSnapshot.getKey()).child("ID").getValue().toString().split("B")[1];
                                                 startActivity(new Intent(page_login.this,page_employee.class));
                                                 ck+=1;
                                                 break aa;

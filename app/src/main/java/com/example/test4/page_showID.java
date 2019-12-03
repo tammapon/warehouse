@@ -21,9 +21,9 @@ public class page_showID extends AppCompatActivity {
         setContentView(R.layout.activity_page_show_id);
         setContentView(R.layout.activity_page_show_id);
         TextView myTextView = (TextView) findViewById(R.id.myTextView);
-        myTextView.setText("code:manager");
+        myTextView.setText("2x"+page_login.userID);
         TextView myTextView2 = (TextView) findViewById(R.id.myTextView2);
-        myTextView2.setText("code:employee");
+        myTextView2.setText("3x"+page_login.userID);
 
 
     }
