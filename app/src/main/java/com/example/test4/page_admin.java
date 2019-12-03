@@ -4,32 +4,42 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class page_admin extends AppCompatActivity {
-
+    private DatabaseReference myRef;
     private SwipeMenuListView swipeListView;
     private CustomListView adapter;
     private ArrayList<String> name = new ArrayList<String>();
     private ArrayList<String> level = new ArrayList<String>();
     private ArrayList<String> Number = new ArrayList<String>();
     private ArrayList<String> id = new ArrayList<String>();
+    //public ArrayList<String> test = new ArrayList<String>();
     Button btn_showID;
 
     @Override
@@ -37,32 +47,86 @@ public class page_admin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //database
+
+        ImageView refresh = (ImageView)findViewById(R.id.refresh4);
         btn_showID=(Button)findViewById(R.id.btnToaddZone);
 
         btn_showID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent test = new Intent(page_admin.this,page_showID.class);
-                startActivity(test);
+
+                Intent add = new Intent(page_admin.this,page_showID.class);
+                startActivity(add);
             }
         });
 
-        swipeListView = findViewById(R.id.swipeListView);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        //create data to listview
-        setDataListView("Supachok","10001");
-        setDataListView("Napat","20001");
-        setDataListView("Cindolara","20001");
-        setDataListView("Ichiton","10001");
-        setDataListView("Tammapon","20001");
-        setDataListView("Supanat","10001");
+                myRef = FirebaseDatabase.getInstance().getReference().child("Lnwklui").child("user");
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        ArrayList<String> passname = new ArrayList<String>();
+                        long count = dataSnapshot.getChildrenCount();
+                        int passcount = (int)count;
+                        for(DataSnapshot child:dataSnapshot.getChildren()){
+                            Log.e("==x lng",Long.toString(count));
+                            Log.e("==x child",child.toString());
+                            passname.add(child.getKey().toString());
+                        }
 
-        //create swipe menu listview
-        setSwipeListView();
+                        Log.e("==x pass",passname.toString());
+                        Intent intent = getIntent();
+                        finish();
+                        intent.putExtra("count",count);
+                        intent.putExtra("DBname",passname);
+                        startActivity(intent);
+                    }
 
-        adapter = new CustomListView(this);
-        swipeListView.setAdapter(adapter);
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                    }
+                });
+            }
+        });
+
+        ArrayList<String> mylist = (ArrayList<String>) getIntent().getSerializableExtra("DBname");
+
+        if(mylist!=null) {
+            Log.e("==x get", mylist.toString());
+            Log.e("==x size", String.valueOf(mylist.size()));
+            swipeListView = findViewById(R.id.swipeListView);
+
+            int size = mylist.size();
+            //create data to listview
+//        setDataListView("Supachok","10001");
+//        setDataListView("Napat","20001");
+//        setDataListView("Cindolara","20001");
+//        setDataListView("Ichiton","10001");
+//        setDataListView("Tammapon","20001");
+//       setDataListView("Supanat","10001");
+
+//        test.add("2");
+//        test.add("3");
+//        test.add("4");
+//        Log.e("==x ",test.toString());
+//
+            for (int i = 0; i < size; i++) {
+                String a = mylist.get(i);
+                setDataListView(a, "1");
+            }
+
+
+            //create swipe menu listview
+            setSwipeListView();
+
+            adapter = new CustomListView(this);
+            swipeListView.setAdapter(adapter);
+        }
     }
 
     private void setDataListView(String a,String i) {
@@ -75,6 +139,9 @@ public class page_admin extends AppCompatActivity {
             level.add("employee");
         }
         else if(i.charAt(0)=='3'){
+            level.add("manager");
+        }
+        else{
             level.add("manager");
         }
     }
@@ -117,7 +184,7 @@ public class page_admin extends AppCompatActivity {
                 dialog_title.setText(String.valueOf("Delete List"));
 
                 TextView dialog_description = (TextView)dialog.findViewById(R.id.dialog_description);
-                dialog_description.setText(String.valueOf("You want delete this"+name.get(position)+"?"));
+                dialog_description.setText(String.valueOf("You want delete "+name.get(position)+"?"));
 
                 Button buttonCancel = (Button)dialog.findViewById(R.id.buttonCancel);
                 buttonCancel.setOnClickListener(new View.OnClickListener() {
