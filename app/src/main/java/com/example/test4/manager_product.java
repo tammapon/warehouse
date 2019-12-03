@@ -40,6 +40,7 @@ public class manager_product extends AppCompatActivity {
     private ArrayList<Integer> amount = new ArrayList<>();
     private ArrayList<Integer> value = new ArrayList<>();
     private ArrayList<String> data_check = new ArrayList<String>();
+    Dialog myDialog;
     private String check_data = "620106";
 
     Button btn_tozone,btn_toaddproduct;
@@ -48,6 +49,7 @@ public class manager_product extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_product);
+        myDialog = new Dialog(this);
 
        btn_toaddproduct=(Button)findViewById(R.id.btnToaddZone);
        btn_tozone=(Button)findViewById(R.id.btnToZone);
@@ -131,6 +133,20 @@ public class manager_product extends AppCompatActivity {
         adapter = new CustomListView(this);
         swipeListView.setAdapter(adapter);
 
+    }
+
+    public void ShowPopup(View v){
+
+        Button btncancle;
+        myDialog.setContentView(R.layout.windowpopup);
+        btncancle = (Button) myDialog.findViewById(R.id.btncancle);
+        btncancle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
     }
 
     private void setDataListView(String ID,String NAME,String ZONE,int AMOUNT,String date,int Value) {
