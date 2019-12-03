@@ -35,17 +35,17 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
-//        if(state != null) {
-//            mFlash = state.getBoolean(FLASH_STATE, false);
-//            mAutoFocus = state.getBoolean(AUTO_FOCUS_STATE, true);
-//            mSelectedIndices = state.getIntegerArrayList(SELECTED_FORMATS);
-//            mCameraId = state.getInt(CAMERA_ID, -1);
-//        } else {
-//            mFlash = false;
-//            mAutoFocus = true;
-//            mSelectedIndices = null;
-//            mCameraId = -1;
-//        }
+        if(state != null) {
+            mFlash = state.getBoolean(FLASH_STATE, false);
+            mAutoFocus = state.getBoolean(AUTO_FOCUS_STATE, true);
+            mSelectedIndices = state.getIntegerArrayList(SELECTED_FORMATS);
+            mCameraId = state.getInt(CAMERA_ID, -1);
+        } else {
+            mFlash = false;
+            mAutoFocus = true;
+            mSelectedIndices = null;
+            mCameraId = -1;
+        }
 
         setContentView(R.layout.activity_simple_scanner);
         setupToolbar();
@@ -147,7 +147,7 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
             r.play();
         } catch (Exception e) {}
         String[] arrOfStr = rawResult.getText().split(",");
-        showMessageDialog("Name : " + arrOfStr[0]+" \nEXP : " + arrOfStr[1]);
+        showMessageDialog("Name : " + arrOfStr[0]+" \nEXP : " + arrOfStr[1]+" \nDate In : " + arrOfStr[2]+" \nValue : " + arrOfStr[3]);
     }
 
     public void showMessageDialog(String message) {

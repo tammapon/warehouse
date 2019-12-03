@@ -5,17 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,9 +34,14 @@ public class manager_product extends AppCompatActivity {
     private CustomListView adapter;
     private ArrayList<String> name = new ArrayList<String>();
     private ArrayList<String> zone = new ArrayList<String>();
+    private ArrayList<String> DateIN = new ArrayList<String>();
     private ArrayList<String> Number = new ArrayList<String>();
     private ArrayList<String> id = new ArrayList<String>();
     private ArrayList<Integer> amount = new ArrayList<>();
+    private ArrayList<Integer> value = new ArrayList<>();
+    private ArrayList<String> data_check = new ArrayList<String>();
+    private String check_data = "620106";
+
     Button btn_tozone,btn_toaddproduct;
     private DatabaseReference myRef;
     @Override
@@ -116,7 +117,9 @@ public class manager_product extends AppCompatActivity {
                 String id = DBID.get(a);
                 String name = DBNM.get(a);
                 int amount = DBAM.get(a);
-                setDataListView(id,name,"A",amount);
+                String date = "620105";
+                int Value = 499;
+                setDataListView(id,name,"A",amount,date,Value);
             }
         }
 
@@ -130,11 +133,13 @@ public class manager_product extends AppCompatActivity {
 
     }
 
-    private void setDataListView(String ID,String NAME,String ZONE,int AMOUNT) {
+    private void setDataListView(String ID,String NAME,String ZONE,int AMOUNT,String date,int Value) {
         id.add(ID);
         name.add(NAME);
         zone.add(ZONE);
         amount.add(AMOUNT);
+        DateIN.add(date);
+        value.add(Value);
     }
 
     private void setSwipeListView() {
@@ -171,20 +176,29 @@ public class manager_product extends AppCompatActivity {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.setContentView(R.layout.dialog_data);
+                Button buttonOK = (Button)dialog.findViewById(R.id.buttonOK);
                 TextView dialog_title = (TextView)dialog.findViewById(R.id.dialog_title);
-                dialog_title.setText(String.valueOf("Export Prouct"));
-
-                TextView dialog_description = (TextView)dialog.findViewById(R.id.dialog_description);
-                dialog_description.setText(String.valueOf("You want export this "+name.get(position)+"?"));
-
                 Button buttonCancel = (Button)dialog.findViewById(R.id.buttonCancel);
+                TextView dialog_description = (TextView)dialog.findViewById(R.id.dialog_description);
+
+//check firstin - firstout
+                if(DateIN.get(position).equals(check_data)){
+                    dialog_title.setText(String.valueOf("Export Prouct"));
+                    dialog_description.setText(String.valueOf("You want export this "+name.get(position)+"?"));
+                }
+                else{
+                    dialog_title.setText(String.valueOf("!!!This product should not be exported"));
+                    dialog_description.setText(String.valueOf("You want export this "+name.get(position)+"?"));
+                }
+
+
                 buttonCancel.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         dialog.cancel();
                     }
                 });
 
-                Button buttonOK = (Button)dialog.findViewById(R.id.buttonOK);
+
                 buttonOK.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
 
@@ -215,7 +229,7 @@ public class manager_product extends AppCompatActivity {
                         name.remove(position);
                         id.remove(position);
                         zone.remove(position);
-                        amount.remove(position);
+                        DateIN.remove(position);
 
                         adapter.notifyDataSetChanged();
 
@@ -281,7 +295,7 @@ public class manager_product extends AppCompatActivity {
             holder.zone.setText(String.valueOf("Zone: "+zone.get(position)));
             holder.id.setText(String.valueOf("ID: "+id.get(position)));
             holder.Number.setText(String.valueOf("No: " + position));
-            holder.amount.setText(String.valueOf("Amount: "+amount.get(position)));
+            //holder.amount.setText(String.valueOf("Amount: "+amount.get(position)));
 
             return convertView;
         }

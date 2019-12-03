@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
-
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.r0adkll.slidr.Slidr;
@@ -73,7 +72,7 @@ public class ScanOutActivity extends BaseScannerActivity implements MessageDialo
         outState.putIntegerArrayList(SELECTED_FORMATS, mSelectedIndices);
         outState.putInt(CAMERA_ID, mCameraId);
     }
-//
+
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
 //        MenuItem menuItem;
@@ -146,7 +145,12 @@ public class ScanOutActivity extends BaseScannerActivity implements MessageDialo
             r.play();
         } catch (Exception e) {}
         String[] arrOfStr = rawResult.getText().split(",");
-        showMessageDialog("Name : " + arrOfStr[0]+" \nEXP : " + arrOfStr[1]);
+        showMessageDialog("Name : " + arrOfStr[0]+" \nEXP : " + arrOfStr[1]+" \nDate In : " + arrOfStr[2]+" \nValue : " + arrOfStr[3]);
+        //check
+
+
+
+
     }
 
     public void showMessageDialog(String message) {

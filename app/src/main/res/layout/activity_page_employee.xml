@@ -9,48 +9,52 @@
 
     <ListView
         android:id="@+id/listzone"
-        android:fontFamily="@font/segoe"
-        android:layout_width="400dp"
-        android:layout_height="560dp"
+        android:layout_width="match_parent"
+        android:layout_height="494dp"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="91dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
         android:layout_marginBottom="80dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:fontFamily="@font/segoe">
 
     </ListView>
 
     <Button
         android:id="@+id/btn_addzone"
-        android:fontFamily="@font/segoe"
-        android:layout_width="172dp"
-        android:layout_height="62dp"
+        android:layout_width="151dp"
+        android:layout_height="44dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginEnd="218dp"
-        android:layout_marginRight="218dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
         android:layout_marginBottom="19dp"
+        android:layout_toStartOf="@+id/btn_export"
+        android:layout_toLeftOf="@+id/btn_export"
         android:background="@drawable/drawable_menu"
+        android:fontFamily="@font/segoe"
         android:onClick="launchFullActivity"
         android:text="Import" />
 
     <Button
         android:id="@+id/btn_export"
-        android:layout_width="172dp"
-        android:layout_height="62dp"
-        android:fontFamily="@font/segoe"
+        android:layout_width="127dp"
+        android:layout_height="45dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginRight="47dp"
         android:layout_marginBottom="18dp"
         android:background="@drawable/red"
+        android:fontFamily="@font/segoe"
         android:onClick="launchOutActivity"
         android:text="export" />
 
