@@ -13,18 +13,12 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -34,16 +28,11 @@ public class manager_product extends AppCompatActivity {
     private CustomListView adapter;
     private ArrayList<String> name = new ArrayList<String>();
     private ArrayList<String> zone = new ArrayList<String>();
-    private ArrayList<String> DateIN = new ArrayList<String>();
     private ArrayList<String> Number = new ArrayList<String>();
     private ArrayList<String> id = new ArrayList<String>();
     private ArrayList<Integer> amount = new ArrayList<>();
-    private ArrayList<Integer> value = new ArrayList<>();
-    private ArrayList<String> data_check = new ArrayList<String>();
-    private String check_data = "620106";
-
     Button btn_tozone,btn_toaddproduct;
-    private DatabaseReference myRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,61 +57,11 @@ public class manager_product extends AppCompatActivity {
         });
 
         swipeListView = findViewById(R.id.swipeZone);
-        Button refresh = (Button) findViewById(R.id.refresh);
 
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myRef = FirebaseDatabase.getInstance().getReference().child("Lnwklui").child("warehouse").child("A").child("item");
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        ArrayList<String> passNM = new ArrayList<String>();
-                        ArrayList<String> passID = new ArrayList<String>();
-                        ArrayList<Integer> passAM = new ArrayList<Integer>();
-                        for(DataSnapshot child:dataSnapshot.getChildren()){
-                            passNM.add(child.child("name").getValue().toString());
-                            passID.add(child.child("ID").getValue().toString());
-                            passAM.add(Integer.parseInt(child.child("amount").getValue().toString()));
-                        }
-//                        Log.e("==x n",passNM.toString());
-//                        Log.e("==x i",passID.toString());
-//                        Log.e("==x a",passAM.toString());
-
-                        Intent intent = getIntent();
-                        finish();
-                        intent.putExtra("passNM",passNM);
-                        intent.putExtra("passAM",passAM);
-                        intent.putExtra("passID",passID);
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });
         //create data to listview
-        ArrayList<String> DBNM = (ArrayList<String>)getIntent().getSerializableExtra("passNM");
-        ArrayList<Integer> DBAM = (ArrayList<Integer>)getIntent().getSerializableExtra("passAM");
-        ArrayList<String> DBID = (ArrayList<String>)getIntent().getSerializableExtra("passID");
-        if(DBNM != null){
-//            setDataListView("0200","cookie","A",20);
-//            setDataListView("0400","oreo","A",20);
-//            setDataListView("0600","pizza","A",20);
-            long c = DBNM.size();
-            for(int a=0;a< c;a++){
-                String id = DBID.get(a);
-                String name = DBNM.get(a);
-                int amount = DBAM.get(a);
-                String date = "620105";
-                int Value = 499;
-                setDataListView(id,name,"A",amount,date,Value);
-            }
-        }
-
+        setDataListView("0200","cookie","A",20);
+        setDataListView("0400","oreo","A",20);
+        setDataListView("0600","pizza","A",20);
 
 
 
@@ -133,13 +72,11 @@ public class manager_product extends AppCompatActivity {
 
     }
 
-    private void setDataListView(String ID,String NAME,String ZONE,int AMOUNT,String date,int Value) {
+    private void setDataListView(String ID,String NAME,String ZONE,int AMOUNT) {
         id.add(ID);
         name.add(NAME);
         zone.add(ZONE);
         amount.add(AMOUNT);
-        DateIN.add(date);
-        value.add(Value);
     }
 
     private void setSwipeListView() {
@@ -176,60 +113,27 @@ public class manager_product extends AppCompatActivity {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.setContentView(R.layout.dialog_data);
-                Button buttonOK = (Button)dialog.findViewById(R.id.buttonOK);
                 TextView dialog_title = (TextView)dialog.findViewById(R.id.dialog_title);
-                Button buttonCancel = (Button)dialog.findViewById(R.id.buttonCancel);
+                dialog_title.setText(String.valueOf("Export Prouct"));
+
                 TextView dialog_description = (TextView)dialog.findViewById(R.id.dialog_description);
+                dialog_description.setText(String.valueOf("You want export this "+name.get(position)+"?"));
 
-//check firstin - firstout
-                if(DateIN.get(position).equals(check_data)){
-                    dialog_title.setText(String.valueOf("Export Prouct"));
-                    dialog_description.setText(String.valueOf("You want export this "+name.get(position)+"?"));
-                }
-                else{
-                    dialog_title.setText(String.valueOf("!!!This product should not be exported"));
-                    dialog_description.setText(String.valueOf("You want export this "+name.get(position)+"?"));
-                }
-
-
+                Button buttonCancel = (Button)dialog.findViewById(R.id.buttonCancel);
                 buttonCancel.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         dialog.cancel();
                     }
                 });
 
-
+                Button buttonOK = (Button)dialog.findViewById(R.id.buttonOK);
                 buttonOK.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
 
-                        myRef = FirebaseDatabase.getInstance().getReference().child("Lnwklui").child("warehouse").child("A");
-                        myRef.child("item").child(name.get(position)).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                String ID = dataSnapshot.child("ID").getValue().toString();
-                                String name = dataSnapshot.child("name").getValue().toString();
-                                String amount = dataSnapshot.child("amount").getValue().toString();
-
-                                DatabaseReference newMyRef;
-                                newMyRef = FirebaseDatabase.getInstance().getReference();
-                                newMyRef = newMyRef.child("Lnwklui").child("warehouse").child("A").child("bufferitem");
-                                newMyRef.child(name).child("ID").setValue(ID);
-                                newMyRef.child(name).child("name").setValue(name);
-                                newMyRef.child(name).child("amount").setValue(amount);
-                                newMyRef.child(name).child("status").setValue("Export");
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-
-                        myRef.child("item").child(name.get(position)).removeValue();
                         name.remove(position);
                         id.remove(position);
                         zone.remove(position);
-                        DateIN.remove(position);
+                        amount.remove(position);
 
                         adapter.notifyDataSetChanged();
 
@@ -295,7 +199,7 @@ public class manager_product extends AppCompatActivity {
             holder.zone.setText(String.valueOf("Zone: "+zone.get(position)));
             holder.id.setText(String.valueOf("ID: "+id.get(position)));
             holder.Number.setText(String.valueOf("No: " + position));
-            //holder.amount.setText(String.valueOf("Amount: "+amount.get(position)));
+            holder.amount.setText(String.valueOf("Amount: "+amount.get(position)));
 
             return convertView;
         }

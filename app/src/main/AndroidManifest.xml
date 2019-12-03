@@ -11,19 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".add_product"
-            android:theme="@style/AppTheme.SlidrActivityTheme"></activity>
+        <activity android:name=".value"></activity>
+        <activity
+            android:name=".add_product"
+            android:theme="@style/AppTheme.SlidrActivityTheme" />
         <activity android:name=".product_export" />
         <activity android:name=".manager_product" />
-        <activity android:name=".page_add_zone"
-            android:theme="@style/AppTheme.SlidrActivityTheme"/>
+        <activity
+            android:name=".page_add_zone"
+            android:theme="@style/AppTheme.SlidrActivityTheme" />
         <activity android:name=".manager_zone" />
         <activity
             android:name=".mannagerfunc"
             android:label="@string/title_activity_mannagerfunc"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".page_showID"
-            android:theme="@style/AppTheme.SlidrActivityTheme"/>
+        <activity
+            android:name=".page_showID"
+            android:theme="@style/AppTheme.SlidrActivityTheme" />
         <activity android:name=".additem" />
         <activity android:name=".Mainactivity_start" />
         <activity android:name=".page_levelSelect" />
@@ -52,7 +56,8 @@
             android:label="        Scan import product"
             android:theme="@style/AppTheme.SlidrActivityTheme"
             android:uiOptions="splitActionBarWhenNarrow">
-            <!--android:theme="@style/AppOverlayTheme"-->
+
+            <!-- android:theme="@style/AppOverlayTheme" -->
             <meta-data
                 android:name="android.support.UI_OPTIONS"
                 android:value="splitActionBarWhenNarrow" />
