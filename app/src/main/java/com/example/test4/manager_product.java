@@ -176,11 +176,11 @@ public class manager_product extends AppCompatActivity {
                 // create "delete" item
                 SwipeMenuItem deleteItem = new SwipeMenuItem(manager_product.this);
                 // set item background
-                deleteItem.setBackground(new ColorDrawable(getResources().getColor(R.color.red)));
+                deleteItem.setBackground(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
                 // set item width
                 deleteItem.setWidth(170);
                 // set a icon
-                deleteItem.setIcon(R.drawable.ic_arrow);
+                deleteItem.setIcon(R.drawable.ic_arrow_forward_black_24dp);
                 // set item title
                 deleteItem.setTitle("export");
                 // set item title fontsize
