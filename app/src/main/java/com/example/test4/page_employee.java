@@ -1,5 +1,7 @@
 package com.example.test4;
 
+import java.text.*;
+import java.util.Date;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -26,7 +28,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class page_employee extends AppCompatActivity {
@@ -58,19 +63,23 @@ public class page_employee extends AppCompatActivity {
                         ArrayList<String> ID = new ArrayList<String>();
                         ArrayList<String> Amount = new ArrayList<String>();
                         ArrayList<String> status = new ArrayList<String>();
+                        ArrayList<String> code = new ArrayList<String>();
+
                         for (DataSnapshot child:dataSnapshot.getChildren()){
                             name.add(child.child("name").getValue().toString());
                             ID.add(child.child("ID").getValue().toString());
                             Amount.add(child.child("amount").getValue().toString());
                             status.add(child.child("status").getValue().toString());
+                            code.add(child.child("CODE").getValue().toString());
                         }
-                        Log.e("==x",status.toString());
+                        Log.e("==x",code.toString());
 
                         Intent intent = getIntent();
                         intent.putExtra("passN",name);
                         intent.putExtra("passI",ID);
                         intent.putExtra("passA",Amount);
                         intent.putExtra("passS",status);
+                        intent.putExtra("passC",code);
                         finish();
                         startActivity(intent);
                     }
@@ -88,14 +97,42 @@ public class page_employee extends AppCompatActivity {
             ArrayList<String> id = (ArrayList<String>)getIntent().getSerializableExtra("passI");
             ArrayList<String> amount = (ArrayList<String>)getIntent().getSerializableExtra("passA");
             ArrayList<String> status = (ArrayList<String>)getIntent().getSerializableExtra("passS");
+            ArrayList<String> code = (ArrayList<String>)getIntent().getSerializableExtra("passC");
+            String dataStr = "01/01/2010";
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date date1 = new Date();
+            String current_date = sdf.format(date1);
+            ArrayList<String> olditem = new ArrayList<String>();
             for (int a = 0; a < item.size();a++){
                 addProduct(status.get(a), Integer.valueOf(id.get(a)), item.get(a), Integer.valueOf(id.get(a)));
-            }
-//            addProduct("Export", 12303, "Coke", 1);
-//            addProduct("Import", 10111, "cookie", 5);
-//            addProduct("Export", 12111, "pizza", 10);
-//            addProduct("Export", 13111, "fish", 2);
 
+                String[] datasplt = code.get(a).split("S");
+                String date = datasplt[0];
+                String year = "20"+Character.toString(date.charAt(0))+Character.toString(date.charAt(1));
+                int month = Integer.valueOf(Character.toString(date.charAt(2))+Character.toString(date.charAt(3)))+1;
+                String day = Character.toString(date.charAt(4))+Character.toString(date.charAt(5));
+                String in_date = day+"/"+String.valueOf(month)+"/"+year;
+
+                //Log.e("==x in_d",in_date);
+                //Log.e("==x date",current_date);
+
+                SimpleDateFormat DF = new SimpleDateFormat("dd/MM/yyyy");
+                try {
+                    Date d1 = DF.parse(in_date);
+                    Date d2 = DF.parse(current_date);
+                    //Log.e("==x d1",d1.toString());
+                    //Log.e("==x d2",d2.toString());
+                    if(d1.before(d2)){
+                        Log.e("==x","yehee");
+                        olditem.add(item.get(a));
+                        Toast.makeText(getApplicationContext(), "Item will expire soon", Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+            Log.e("==x old item",olditem.toString());
 
             listViewProduct = findViewById(R.id.listzone);
             productListViewAdapter = new ProductListViewAdapter(listProduct);

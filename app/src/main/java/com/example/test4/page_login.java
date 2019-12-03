@@ -19,7 +19,7 @@ public class page_login extends AppCompatActivity {
 
     EditText id_login,pass_login;
     Button access_login,register_login;
-    String level = "B";
+    String level = "C";
     String ID,pass,ID_db,pass_b;
 
     @Override
@@ -47,7 +47,7 @@ public class page_login extends AppCompatActivity {
                 ID = id_login.getText().toString();
                 pass = pass_login.getText().toString();
                 //myRef.addListenerForSingleValueEvent();
-                if (id_login.getText().toString().equals("napat")&&pass_login.getText().toString().equals("napat")){
+                if (id_login.getText().toString().equals("")&&pass_login.getText().toString().equals("")){
                     Toast.makeText(getApplication(),"success",Toast.LENGTH_LONG).show();
                     //send data to databse and return level to check
                     if(level.equals("A")){
