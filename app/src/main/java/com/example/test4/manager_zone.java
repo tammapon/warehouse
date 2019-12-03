@@ -1,5 +1,6 @@
 package com.example.test4;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,13 +22,14 @@ public class manager_zone extends AppCompatActivity {
     ArrayList<Product> listProduct;
     ProductListViewAdapter productListViewAdapter;
     ListView listViewProduct;
-
+    Dialog myDialog;
     Button btn_toproduct,btn_toaddzone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_zone);
+        myDialog = new Dialog(this);
 
         btn_toaddzone=(Button)findViewById(R.id.btnToaddZone);
         btn_toproduct=(Button)findViewById(R.id.btnToProduct);
@@ -66,6 +68,19 @@ public class manager_zone extends AppCompatActivity {
         productListViewAdapter = new ProductListViewAdapter(listProduct);
         listViewProduct.setAdapter(productListViewAdapter);
 
+    }
+    public void ShowPopup(View v){
+
+        Button btncancle;
+        myDialog.setContentView(R.layout.windowpopup);
+        btncancle = (Button) myDialog.findViewById(R.id.btncancle);
+        btncancle.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                myDialog.dismiss();
+            }
+        });
+        myDialog.show();
     }
 
 

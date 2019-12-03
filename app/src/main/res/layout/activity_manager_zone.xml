@@ -90,6 +90,7 @@ tools:ignore="MissingConstraints">
         android:background="@drawable/ic_refresh_white_24dp" />
 
     <Button
+        android:onClick="ShowPopup"
         android:id="@+id/money2"
         android:layout_width="53dp"
         android:layout_height="wrap_content"
