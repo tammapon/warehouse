@@ -28,7 +28,7 @@ public class page_login extends AppCompatActivity {
     Button access_login,register_login;
     String level = "B";
     String ID,pass,ID_db,pass_b;
-    String username=" ";
+    public static String username=" ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //database
@@ -76,6 +76,7 @@ public class page_login extends AppCompatActivity {
                                 Log.e("xxx",dataSnapshot.child(ID).child("data").child("password").getValue().toString());
                                 if(dataSnapshot.child(ID).child("data").child("password").getValue().toString().equals(pass)){
                                     Log.e("xxx","scscscsc1111");
+                                    username=childSnapshot.getKey();
                                     startActivity(new Intent(page_login.this,page_admin.class));
                                     ck+=1;
                                     break aa;
@@ -97,12 +98,14 @@ public class page_login extends AppCompatActivity {
                                             String[] IDcode=dataSnapshot.child(childSnapshot.getKey()).child("user").child(ID).child("ID").getValue().toString().split("A");
                                             if (IDcode[0].equals("20")){
                                                 Log.e("xxx","scscscsc2222");
+                                                username=childSnapshot.getKey();
                                                 startActivity(new Intent(page_login.this,manager_product.class));
                                                 ck+=1;
                                                 break aa;
                                             }
                                             else if(IDcode[0].equals("30")){
                                                 Log.e("xxx","scscscsc3333");
+                                                username=childSnapshot.getKey();
                                                 startActivity(new Intent(page_login.this,page_employee.class));
                                                 ck+=1;
                                                 break aa;

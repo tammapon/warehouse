@@ -65,7 +65,8 @@ public class page_admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                myRef = FirebaseDatabase.getInstance().getReference().child("Lnwklui").child("user");
+                myRef = FirebaseDatabase.getInstance().getReference().child(page_login.username).child("user");
+                Log.e("xxx",page_login.username);
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
