@@ -11,29 +11,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".value"></activity>
+        <activity android:name=".value"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".add_product"
-            android:theme="@style/AppTheme.SlidrActivityTheme" />
-        <activity android:name=".product_export" />
-        <activity android:name=".manager_product" />
+            android:theme="@style/AppTheme.SlidrActivityTheme"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".product_export"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".manager_product"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".page_add_zone"
-            android:theme="@style/AppTheme.SlidrActivityTheme" />
-        <activity android:name=".manager_zone" />
+            android:theme="@style/AppTheme.SlidrActivityTheme"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".manager_zone"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mannagerfunc"
             android:label="@string/title_activity_mannagerfunc"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".page_showID"
-            android:theme="@style/AppTheme.SlidrActivityTheme" />
-        <activity android:name=".additem" />
-        <activity android:name=".Mainactivity_start" />
-        <activity android:name=".page_levelSelect" />
-        <activity android:name=".page_register" />
-        <activity android:name=".page_admin" />
-        <activity android:name=".page_login" />
+            android:theme="@style/AppTheme.SlidrActivityTheme"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".additem"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Mainactivity_start"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page_levelSelect"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page_register"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page_admin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".page_login"
+            android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +58,8 @@
         <activity
             android:name=".page_employee"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,7 +70,8 @@
             android:name=".FullScannerActivity"
             android:label="        Scan import product"
             android:theme="@style/AppTheme.SlidrActivityTheme"
-            android:uiOptions="splitActionBarWhenNarrow">
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:screenOrientation="portrait">
 
             <!-- android:theme="@style/AppOverlayTheme" -->
             <meta-data
@@ -66,7 +82,8 @@
             android:name=".ScanOutActivity"
             android:label="        Scan export product"
             android:theme="@style/AppTheme.SlidrActivityTheme"
-            android:uiOptions="splitActionBarWhenNarrow">
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.UI_OPTIONS"
                 android:value="splitActionBarWhenNarrow" />
