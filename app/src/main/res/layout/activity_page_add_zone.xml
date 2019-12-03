@@ -34,7 +34,7 @@
         app:srcCompat="@drawable/b_zone" />
 
     <EditText
-        android:id="@+id/az_bar"
+        android:id="@+id/add_pro_name"
         android:layout_width="176dp"
         android:layout_height="53dp"
         android:layout_marginEnd="60dp"

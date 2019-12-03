@@ -48,39 +48,43 @@ public class page_employee extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_employee);
         setupToolbar();
-        Button refresh = (Button)findViewById(R.id.refresh3);
+        Button refresh3 = (Button) findViewById(R.id.refresh3);
         listProduct = new ArrayList<>();
 
-        refresh.setOnClickListener(new View.OnClickListener() {
+        refresh3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DatabaseReference myRef;
                 myRef = FirebaseDatabase.getInstance().getReference();
                 myRef = myRef.child("Lnwklui").child("warehouse").child("A").child("bufferitem");
-                myRef.addValueEventListener(new ValueEventListener() {
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         ArrayList<String> name = new ArrayList<String>();
-                        ArrayList<String> ID = new ArrayList<String>();
-                        ArrayList<String> Amount = new ArrayList<String>();
-                        ArrayList<String> status = new ArrayList<String>();
+                        ArrayList<String> id = new ArrayList<String>();
+                        ArrayList<String> type = new ArrayList<String>();
+                        ArrayList<String> amount = new ArrayList<String>();
                         ArrayList<String> code = new ArrayList<String>();
-
-                        for (DataSnapshot child:dataSnapshot.getChildren()){
-                            name.add(child.child("name").getValue().toString());
-                            ID.add(child.child("ID").getValue().toString());
-                            Amount.add(child.child("amount").getValue().toString());
-                            status.add(child.child("status").getValue().toString());
-                            code.add(child.child("CODE").getValue().toString());
+                        for (DataSnapshot ItemName:dataSnapshot.getChildren()){
+                            name.add(ItemName.child("name").getValue().toString());
+                            id.add(ItemName.child("ID").getValue().toString());
+                            type.add(ItemName.child("status").getValue().toString());
+                            amount.add(ItemName.child("amount").getValue().toString());
+                            code.add(ItemName.child("CODE").getValue().toString());
                         }
-                        Log.e("==x",code.toString());
+                        Log.e("==x id",id.toString());
+                        Log.e("==x nm",name.toString());
+                        Log.e("==x ty",type.toString());
+                        Log.e("==x am",amount.toString());
+                        Log.e("==x cd",code.toString());
 
                         Intent intent = getIntent();
-                        intent.putExtra("passN",name);
-                        intent.putExtra("passI",ID);
-                        intent.putExtra("passA",Amount);
-                        intent.putExtra("passS",status);
-                        intent.putExtra("passC",code);
                         finish();
+                        intent.putExtra("passid",id);
+                        intent.putExtra("passnm",name);
+                        intent.putExtra("passty",type);
+                        intent.putExtra("passam",amount);
+                        intent.putExtra("passcd",code);
                         startActivity(intent);
                     }
 
@@ -89,55 +93,27 @@ public class page_employee extends AppCompatActivity {
 
                     }
                 });
-
             }
         });
-        ArrayList<String> item = (ArrayList<String>)getIntent().getSerializableExtra("passN");
-        if(item!=null) {
-            ArrayList<String> id = (ArrayList<String>)getIntent().getSerializableExtra("passI");
-            ArrayList<String> amount = (ArrayList<String>)getIntent().getSerializableExtra("passA");
-            ArrayList<String> status = (ArrayList<String>)getIntent().getSerializableExtra("passS");
-            ArrayList<String> code = (ArrayList<String>)getIntent().getSerializableExtra("passC");
-            String dataStr = "01/01/2010";
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            Date date1 = new Date();
-            String current_date = sdf.format(date1);
-            ArrayList<String> olditem = new ArrayList<String>();
-            for (int a = 0; a < item.size();a++){
-                addProduct(status.get(a), Integer.valueOf(id.get(a)), item.get(a), Integer.valueOf(id.get(a)));
+        ArrayList<String> id =(ArrayList<String>)getIntent().getSerializableExtra("passid");
+    if (id != null) {
+        ArrayList<String> name =(ArrayList<String>)getIntent().getSerializableExtra("passnm");
+        ArrayList<String> type =(ArrayList<String>)getIntent().getSerializableExtra("passty");
+        ArrayList<String> amth =(ArrayList<String>)getIntent().getSerializableExtra("passam");
+        ArrayList<String> code =(ArrayList<String>)getIntent().getSerializableExtra("passcd");
 
-                String[] datasplt = code.get(a).split("S");
-                String date = datasplt[0];
-                String year = "20"+Character.toString(date.charAt(0))+Character.toString(date.charAt(1));
-                int month = Integer.valueOf(Character.toString(date.charAt(2))+Character.toString(date.charAt(3)))+1;
-                String day = Character.toString(date.charAt(4))+Character.toString(date.charAt(5));
-                String in_date = day+"/"+String.valueOf(month)+"/"+year;
-
-                //Log.e("==x in_d",in_date);
-                //Log.e("==x date",current_date);
-
-                SimpleDateFormat DF = new SimpleDateFormat("dd/MM/yyyy");
-                try {
-                    Date d1 = DF.parse(in_date);
-                    Date d2 = DF.parse(current_date);
-                    //Log.e("==x d1",d1.toString());
-                    //Log.e("==x d2",d2.toString());
-                    if(d1.before(d2)){
-                        Log.e("==x","yehee");
-                        olditem.add(item.get(a));
-                        Toast.makeText(getApplicationContext(), "Item will expire soon", Toast.LENGTH_SHORT).show();
-                    }
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-            Log.e("==x old item",olditem.toString());
-
-            listViewProduct = findViewById(R.id.listzone);
-            productListViewAdapter = new ProductListViewAdapter(listProduct);
-            listViewProduct.setAdapter(productListViewAdapter);
+        for (int a = 0; a< name.size();a++){
+            String atype  = type.get(a);
+            int aamth     = Integer.valueOf(amth.get(a));
+            String aname  = name.get(a);
+            int aid = Integer.valueOf(id.get(a));
+            addProduct(atype, aid, aname, aamth);
         }
+        listViewProduct = findViewById(R.id.listzone);
+        productListViewAdapter = new ProductListViewAdapter(listProduct);
+        listViewProduct.setAdapter(productListViewAdapter);
+    }
+
     }
 
     public void setupToolbar() {
