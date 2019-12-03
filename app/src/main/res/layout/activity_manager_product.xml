@@ -16,14 +16,15 @@
 
     <Button
         android:id="@+id/btnToProduct"
-        android:layout_width="133dp"
-        android:layout_height="61dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="90dp"
         android:layout_marginEnd="225dp"
         android:layout_marginRight="225dp"
+        android:background="@drawable/drawable_menu"
         android:text="@string/product" />
 
     <com.baoyz.swipemenulistview.SwipeMenuListView
@@ -69,15 +70,16 @@
 
     <Button
         android:id="@+id/btnToZone"
-        android:layout_width="133dp"
-        android:layout_height="61dp"
+        android:layout_width="206dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:text="Zone" />
+        android:layout_marginTop="93dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:background="@android:color/transparent"
+        android:text="Zone"  />
 
     <Button
         android:id="@+id/money1"
