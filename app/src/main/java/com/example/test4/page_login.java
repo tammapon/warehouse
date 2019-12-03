@@ -2,15 +2,22 @@ package com.example.test4;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 public class page_login extends AppCompatActivity {
 
@@ -19,9 +26,9 @@ public class page_login extends AppCompatActivity {
 
     EditText id_login,pass_login;
     Button access_login,register_login;
-    String level = "C";
+    String level = "B";
     String ID,pass,ID_db,pass_b;
-
+    String username=" ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //database
@@ -46,8 +53,73 @@ public class page_login extends AppCompatActivity {
             public void onClick(View v) {
                 ID = id_login.getText().toString();
                 pass = pass_login.getText().toString();
-                //myRef.addListenerForSingleValueEvent();
-                if (id_login.getText().toString().equals("")&&pass_login.getText().toString().equals("")){
+                Log.e("xxx",ID);
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        //Map map = (Map) dataSnapshot.getValue();
+                        //username = map.get(ID).toString();
+                        //if (map.get(ID)){
+                        //    ...
+                        //}
+                        //Log.e("xxx",username);
+                        //Log.e("xxx",dataSnapshot.getChildren()[]);
+                        Integer i=0;
+                        aa:
+                        for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                            Log.e("xxx",i.toString());
+                            Log.e("xxx",childSnapshot.getKey());
+
+                            i+=1;
+                            if(childSnapshot.getKey().equals(ID)){
+                                Log.e("xxx","scscscsc");
+                                Log.e("xxx",dataSnapshot.child(ID).child("data").child("password").getValue().toString());
+                                if(dataSnapshot.child(ID).child("data").child("password").getValue().toString().equals(pass)){
+                                    Log.e("xxx","scscscsc1111");
+                                    startActivity(new Intent(page_login.this,page_admin.class));
+                                    break aa;
+                                }
+                            }
+                            else if (childSnapshot.getKey().equals("Databuffer")){
+                            }
+                            else if (childSnapshot.getKey().equals("testcode")){
+                                Toast.makeText(getApplication(),"fail",Toast.LENGTH_LONG).show();
+                            }
+                            else {
+                                Log.e("xxx",dataSnapshot.child(childSnapshot.getKey()).child("user").getKey());
+                                bb:
+                                for (DataSnapshot childSnapshot2: dataSnapshot.child(childSnapshot.getKey()).child("user").getChildren()){
+                                    Log.e("xxx",childSnapshot2.getKey());
+                                    if(childSnapshot2.getKey().equals(ID)){
+                                        if(dataSnapshot.child(childSnapshot.getKey()).child("user").child(ID).child("password").getValue().toString().equals(pass)){
+                                            Log.e("xxx",dataSnapshot.child(childSnapshot.getKey()).child("user").child(ID).child("password").getValue().toString());
+                                            String[] IDcode=dataSnapshot.child(childSnapshot.getKey()).child("user").child(ID).child("ID").getValue().toString().split("A");
+                                            if (IDcode[0].equals("20")){
+                                                Log.e("xxx","scscscsc2222");
+                                                startActivity(new Intent(page_login.this,manager_product.class));
+                                                break aa;
+                                            }
+                                            else if(IDcode[0].equals("10")){
+                                                Log.e("xxx","scscscsc3333");
+                                                startActivity(new Intent(page_login.this,page_employee.class));
+                                                break aa;
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        //Toast.makeText(getApplication(),"fail",Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                if (id_login.getText().toString().equals("napat")&&pass_login.getText().toString().equals("napat")){
                     Toast.makeText(getApplication(),"success",Toast.LENGTH_LONG).show();
                     //send data to databse and return level to check
                     if(level.equals("A")){
@@ -61,7 +133,7 @@ public class page_login extends AppCompatActivity {
                     }
                 }
                 else{
-                    Toast.makeText(getApplication(),"fail",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplication(),"fail",Toast.LENGTH_LONG).show();
 
                 }
             }
