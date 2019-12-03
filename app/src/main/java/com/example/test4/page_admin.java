@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -195,7 +193,7 @@ public class page_admin extends AppCompatActivity {
                     }
                 });
 
-                Button buttonOK = (Button)dialog.findViewById(R.id.buttonOK);
+                Button buttonOK = (Button)dialog.findViewById(R.id.ma_OK);
                 buttonOK.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         myRef = FirebaseDatabase.getInstance().getReference();

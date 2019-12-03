@@ -17,8 +17,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Map;
-
 public class page_login extends AppCompatActivity {
 
     //database
@@ -26,7 +24,7 @@ public class page_login extends AppCompatActivity {
 
     EditText id_login,pass_login;
     Button access_login,register_login;
-    String level = "B";
+    String level = "A";
     String ID,pass,ID_db,pass_b;
     public static String username=" ";
     public static String userID=" ";

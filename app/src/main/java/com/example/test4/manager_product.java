@@ -41,9 +41,10 @@ public class manager_product extends AppCompatActivity {
     private ArrayList<Integer> value = new ArrayList<>();
     private ArrayList<String> data_check = new ArrayList<String>();
     private String check_data = "620106";
+    private int ValueOfWarehouse = 5000000;
     Dialog myDialog;
 
-    Button btn_tozone,btn_toaddproduct;
+    Button btn_tozone,btn_toaddproduct,btn_show;
     private DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,29 @@ public class manager_product extends AppCompatActivity {
 
        btn_toaddproduct=(Button)findViewById(R.id.btnToaddZone);
        btn_tozone=(Button)findViewById(R.id.btnToZone);
+       btn_show=(Button)findViewById(R.id.money1);
+
+       btn_show.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               final Dialog dialog = new Dialog(manager_product.this);
+               dialog.getWindow();
+               dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+               dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+               dialog.setContentView(R.layout.windowpopup);
+               Button ok = (Button)dialog.findViewById(R.id.button_value);
+               TextView show_value = (TextView)dialog.findViewById(R.id.text_data);
+               show_value.setText(String.valueOf("         Values : "+ ValueOfWarehouse+" Bath."));
+
+               ok.setOnClickListener(new View.OnClickListener() {
+                   public void onClick(View v) {
+                       dialog.cancel();
+                   }
+               });
+
+               dialog.show();
+           }
+       });
 
         btn_toaddproduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,20 +159,6 @@ public class manager_product extends AppCompatActivity {
 
     }
 
-    public void ShowPopup(View v){
-
-        Button btncancle;
-        myDialog.setContentView(R.layout.windowpopup);
-        btncancle = (Button) myDialog.findViewById(R.id.btncancle);
-        btncancle.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                myDialog.dismiss();
-            }
-        });
-        myDialog.show();
-    }
-
     private void setDataListView(String ID,String NAME,String ZONE,int AMOUNT,String date,int Value) {
         id.add(ID);
         name.add(NAME);
@@ -166,11 +176,11 @@ public class manager_product extends AppCompatActivity {
                 // create "delete" item
                 SwipeMenuItem deleteItem = new SwipeMenuItem(manager_product.this);
                 // set item background
-                deleteItem.setBackground(new ColorDrawable(getResources().getColor(R.color.red)));
+                deleteItem.setBackground(new ColorDrawable(getResources().getColor(R.color.colorPrimary)));
                 // set item width
                 deleteItem.setWidth(170);
                 // set a icon
-                deleteItem.setIcon(R.drawable.ic_arrow);
+                deleteItem.setIcon(R.drawable.ic_arrow_forward_black_24dp);
                 // set item title
                 deleteItem.setTitle("export");
                 // set item title fontsize
@@ -192,7 +202,7 @@ public class manager_product extends AppCompatActivity {
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.setContentView(R.layout.dialog_data);
-                Button buttonOK = (Button)dialog.findViewById(R.id.buttonOK);
+                Button buttonOK = (Button)dialog.findViewById(R.id.ma_OK);
                 TextView dialog_title = (TextView)dialog.findViewById(R.id.dialog_title);
                 Button buttonCancel = (Button)dialog.findViewById(R.id.buttonCancel);
                 TextView dialog_description = (TextView)dialog.findViewById(R.id.dialog_description);

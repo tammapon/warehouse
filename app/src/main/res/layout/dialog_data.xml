@@ -82,7 +82,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/buttonOK"
+                android:id="@+id/ma_OK"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#E6E6E6"
