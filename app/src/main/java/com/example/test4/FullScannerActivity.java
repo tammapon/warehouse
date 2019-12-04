@@ -9,11 +9,15 @@ import android.view.ViewGroup;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.r0adkll.slidr.Slidr;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -148,7 +152,7 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
         } catch (Exception e) {}
         String[] arrOfStr = rawResult.getText().split(",");
         showMessageDialog("Name : " + arrOfStr[0]+" \nEXP : " + arrOfStr[1]+" \nDate In : " + arrOfStr[2]+" \nValue : " + arrOfStr[3]);
-    }
+        }
 
     public void showMessageDialog(String message) {
         DialogFragment fragment = MessageDialogFragment.newInstance("Import Product", message, this);
