@@ -18,6 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.r0adkll.slidr.Slidr;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class add_product extends AppCompatActivity {
     Button b2;
 
@@ -29,6 +32,14 @@ public class add_product extends AppCompatActivity {
         b2 = (Button)findViewById(R.id.backok);
         final EditText text_name = (EditText)findViewById(R.id.az_bar);
         final EditText text_amount = (EditText)findViewById(R.id.editText3);
+        String dataStr = "01/01/2010";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
+        Date date1 = new Date();
+        String current_date = sdf.format(date1);
+        String[] spldate = current_date.split("/");
+        final String dateIn = spldate[2]+spldate[1]+spldate[0];
+
+        Log.e("==x",dateIn);
 
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,8 +57,9 @@ public class add_product extends AppCompatActivity {
                         DatabaseReference newRef;
                         newRef = FirebaseDatabase.getInstance().getReference();
                         newRef = newRef.child("Lnwklui").child("warehouse").child("A");
+                        newRef.child("ID").setValue(ID);
                         newRef.child("bufferitem").child(name).child("ID").setValue(ID);
-                        newRef.child("bufferitem").child(name).child("CODE").setValue("191012S124A0");
+                        newRef.child("bufferitem").child(name).child("CODE").setValue(dateIn+":"+name+":"+String.valueOf(ID));
                         newRef.child("bufferitem").child(name).child("name").setValue(name);
                         newRef.child("bufferitem").child(name).child("amount").setValue(amount);
                         newRef.child("bufferitem").child(name).child("status").setValue("Import");
