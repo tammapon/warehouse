@@ -42,7 +42,7 @@ public class manager_product extends AppCompatActivity {
     private ArrayList<Integer> value = new ArrayList<>();
     private ArrayList<String> data_check = new ArrayList<String>();
     private String check_data = "620106";
-    private int ValueOfWarehouse = 5000000;
+    private int ValueOfWarehouse = 0;
     Dialog myDialog;
 
     Button btn_tozone,btn_toaddproduct,btn_show;
@@ -60,22 +60,44 @@ public class manager_product extends AppCompatActivity {
        btn_show.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               final Dialog dialog = new Dialog(manager_product.this);
-               dialog.getWindow();
-               dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-               dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-               dialog.setContentView(R.layout.windowpopup);
-               Button ok = (Button)dialog.findViewById(R.id.button_value);
-               TextView show_value = (TextView)dialog.findViewById(R.id.text_data);
-               show_value.setText(String.valueOf("         Values : "+ ValueOfWarehouse+" Bath."));
+               DatabaseReference myRef;
+               myRef = FirebaseDatabase.getInstance().getReference();
+               final int sum = 0;
+               myRef.child("Lnwklui").child("warehouse").child("A").addListenerForSingleValueEvent(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                       int sum = 0;
+                       for (DataSnapshot child:dataSnapshot.child("bufferitem").getChildren()){
+                            sum = sum + Integer.valueOf(child.child("price").getValue().toString());
+                       }
+                       for (DataSnapshot child:dataSnapshot.child("item").getChildren()){
+                           sum = sum + Integer.valueOf(child.child("price").getValue().toString());
+                       }
+                        Log.e("==x ",String.valueOf(sum));
+                       final Dialog dialog = new Dialog(manager_product.this);
+                       dialog.getWindow();
+                       dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                       dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
-               ok.setOnClickListener(new View.OnClickListener() {
-                   public void onClick(View v) {
-                       dialog.cancel();
+                       dialog.setContentView(R.layout.windowpopup);
+                       Button ok = (Button)dialog.findViewById(R.id.button_value);
+                       TextView show_value = (TextView)dialog.findViewById(R.id.text_data);
+                       show_value.setText(String.valueOf("         Values : "+String.valueOf(sum)+" Bath."));
+
+                       ok.setOnClickListener(new View.OnClickListener() {
+                           public void onClick(View v) {
+                               dialog.cancel();
+                           }
+                       });
+
+                       dialog.show();
+                   }
+
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError databaseError) {
+
                    }
                });
-
-               dialog.show();
            }
        });
 
