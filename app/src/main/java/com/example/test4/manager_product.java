@@ -62,6 +62,7 @@ public class manager_product extends AppCompatActivity {
            public void onClick(View v) {
                DatabaseReference myRef;
                myRef = FirebaseDatabase.getInstance().getReference();
+               //final
                final int sum = 0;
                myRef.child("Lnwklui").child("warehouse").child("A").addListenerForSingleValueEvent(new ValueEventListener() {
                    @Override
