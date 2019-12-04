@@ -59,7 +59,7 @@
         android:fontFamily="@font/segoe"
         android:shadowColor="#00C21F1F"
         android:text="@string/addproduct"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:textIsSelectable="false"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
