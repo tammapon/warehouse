@@ -4,13 +4,18 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.r0adkll.slidr.Slidr;
@@ -142,21 +147,84 @@ public class FullScannerActivity extends BaseScannerActivity implements MessageD
 //                return super.onOptionsItemSelected(item);
 //        }
 //    }
-
+    public DatabaseReference myRef;
+    String Str;
+    String raka;
     @Override
-    public void handleResult(Result rawResult) {
+    public void handleResult(final Result rawResult) {
+        //myRef = FirebaseDatabase.getInstance().getReference();
+
         try {
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
             r.play();
         } catch (Exception e) {}
+        Log.e("xxx","scannnnnnn");
+        /*myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.e("xxx","scannnnnnn222");
+                for (DataSnapshot childSnapshot: dataSnapshot.getChildren()) {
+                    String bufname = childSnapshot.getKey();
+                    Log.e("xxx",bufname);
+                    //String bufcode = dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).child("CODE").getValue().toString();
+                    //Log.e("xxx",bufcode);
+                    /*if (bufcode.equals(rawResult.getText())){
+                        //myRef.child(page_login.username).child("warehouse").child("A").child("item").child(bufname).child("price").setValue(dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).child("price").getValue().toString());
+                        myRef.child(page_login.username).child("warehouse").child("A").child("item").child(bufname).child("CODE").setValue(dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).child("CODE").getValue().toString());
+                        myRef.child(page_login.username).child("warehouse").child("A").child("item").child(bufname).child("amount").setValue(dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).child("amount").getValue().toString());
+                        myRef.child(page_login.username).child("warehouse").child("A").child("item").child(bufname).child("name").setValue(dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).child("name").getValue().toString());
+                    }*...
+                    //Log.e("xxx",childSnapshot.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });*/
+
         String[] arrOfStr = rawResult.getText().split(",");
-        showMessageDialog("Name : " + arrOfStr[0]+" \nEXP : " + arrOfStr[1]+" \nDate In : " + arrOfStr[2]+" \nValue : " + arrOfStr[3]);
-        }
+        Str = arrOfStr[0];
+        raka = arrOfStr[1];
+        String[] arrOfStr2 = arrOfStr[0].split(":");
+        showMessageDialog("Name : " + arrOfStr2[1]+" \nDate In : " + arrOfStr2[0]+" \nKey : " + arrOfStr2[2]);
+    }
 
     public void showMessageDialog(String message) {
         DialogFragment fragment = MessageDialogFragment.newInstance("Import Product", message, this);
         fragment.show(getSupportFragmentManager(), "scan_results");
+        myRef = FirebaseDatabase.getInstance().getReference();
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.e("xxx","scannnnnnn222");
+                for (DataSnapshot childSnapshot: dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").getChildren()) {
+                    String bufname = childSnapshot.getKey();
+                    Log.e("xxx",bufname);
+                    String bufcode = dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).child("CODE").getValue().toString();
+                    Log.e("xxx",bufcode);
+                    if (bufcode.equals(Str)){
+                        //myRef.child(page_login.username).child("warehouse").child("A").child("item").child(bufname).child("price").setValue(dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).child("price").getValue().toString());
+                        myRef.child(page_login.username).child("warehouse").child("A").child("item").child(bufname).child("ID").setValue(dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).child("CODE").getValue().toString());
+                        myRef.child(page_login.username).child("warehouse").child("A").child("item").child(bufname).child("amount").setValue(dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).child("amount").getValue().toString());
+                        myRef.child(page_login.username).child("warehouse").child("A").child("item").child(bufname).child("name").setValue(dataSnapshot.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).child("name").getValue().toString());
+                        myRef.child(page_login.username).child("warehouse").child("A").child("item").child(bufname).child("price").setValue(raka);
+                        myRef.child(page_login.username).child("warehouse").child("A").child("bufferitem").child(bufname).removeValue();
+                    }
+                    else {
+
+                    }
+                    //Log.e("xxx",childSnapshot.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void closeMessageDialog() {

@@ -89,6 +89,7 @@ public class page_register extends AppCompatActivity {
                     myRef.child(bufferID).child("data").child("phone").setValue(bufferphone);
                     myRef.child(bufferID).child("Databuffer").child("currentemID").setValue(0);
                     myRef.child(bufferID).child("Databuffer").child("currentmanegerID").setValue(0);
+                    myRef.child(bufferID).child("warehouse").child("A").child("ID").setValue(0);
 
                     //
                     startActivity(new Intent(page_register.this,page_login.class));

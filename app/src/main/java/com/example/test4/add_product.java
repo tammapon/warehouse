@@ -44,11 +44,13 @@ public class add_product extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("xxx","OKKK");
                 final String name = text_name.getText().toString();
                 final String amount = text_amount.getText().toString();
                 DatabaseReference myRef;
                 myRef = FirebaseDatabase.getInstance().getReference();
-                myRef = myRef.child("Lnwklui").child("warehouse").child("A");
+                myRef = myRef.child(page_login.username).child("warehouse").child("A");
+                Log.e("xxx",page_login.username);
                 myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -56,7 +58,7 @@ public class add_product extends AppCompatActivity {
                         ID = ID+1;
                         DatabaseReference newRef;
                         newRef = FirebaseDatabase.getInstance().getReference();
-                        newRef = newRef.child("Lnwklui").child("warehouse").child("A");
+                        newRef = newRef.child(page_login.username).child("warehouse").child("A");
                         newRef.child("ID").setValue(ID);
                         newRef.child("bufferitem").child(name).child("ID").setValue(ID);
                         newRef.child("bufferitem").child(name).child("CODE").setValue(dateIn+":"+name+":"+String.valueOf(ID));

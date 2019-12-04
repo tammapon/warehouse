@@ -64,7 +64,7 @@ public class manager_product extends AppCompatActivity {
                myRef = FirebaseDatabase.getInstance().getReference();
                //final
                final int sum = 0;
-               myRef.child("Lnwklui").child("warehouse").child("A").addListenerForSingleValueEvent(new ValueEventListener() {
+               myRef.child(page_login.username).child("warehouse").child("A").addListenerForSingleValueEvent(new ValueEventListener() {
                    @Override
                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                        int sum = 0;
@@ -123,7 +123,8 @@ public class manager_product extends AppCompatActivity {
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myRef = FirebaseDatabase.getInstance().getReference().child("Lnwklui").child("warehouse").child("A").child("item");
+                Log.e("xxx","reeee");
+                myRef = FirebaseDatabase.getInstance().getReference().child(page_login.username).child("warehouse").child("A").child("item");
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -250,23 +251,28 @@ public class manager_product extends AppCompatActivity {
 
 
                 buttonOK.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
 
-                        myRef = FirebaseDatabase.getInstance().getReference().child("Lnwklui").child("warehouse").child("A");
+                    public void onClick(View v) {
+                        Log.e("xxx","okkkkk");
+                        myRef = FirebaseDatabase.getInstance().getReference().child(page_login.username).child("warehouse").child("A");
                         myRef.child("item").child(name.get(position)).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 String ID = dataSnapshot.child("ID").getValue().toString();
                                 String name = dataSnapshot.child("name").getValue().toString();
                                 String amount = dataSnapshot.child("amount").getValue().toString();
+                                String CODE = dataSnapshot.child("CODE").getValue().toString();
 
                                 DatabaseReference newMyRef;
                                 newMyRef = FirebaseDatabase.getInstance().getReference();
-                                newMyRef = newMyRef.child("Lnwklui").child("warehouse").child("A").child("bufferitem");
+                                newMyRef = newMyRef.child(page_login.username).child("warehouse").child("A").child("bufferitem");
+                                Log.e("xxx",page_login.username);
                                 newMyRef.child(name).child("ID").setValue(ID);
+                                newMyRef.child(name).child("CODE").setValue(CODE);
                                 newMyRef.child(name).child("name").setValue(name);
                                 newMyRef.child(name).child("amount").setValue(amount);
                                 newMyRef.child(name).child("status").setValue("Export");
+
                             }
 
                             @Override

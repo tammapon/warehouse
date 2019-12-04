@@ -56,7 +56,7 @@ public class page_employee extends AppCompatActivity {
             public void onClick(View v) {
                 DatabaseReference myRef;
                 myRef = FirebaseDatabase.getInstance().getReference();
-                myRef = myRef.child("Lnwklui").child("warehouse").child("A").child("bufferitem");
+                myRef = myRef.child(page_login.username).child("warehouse").child("A").child("bufferitem");
                 myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
