@@ -34,7 +34,7 @@
         app:srcCompat="@drawable/b_zone" />
 
     <EditText
-        android:id="@+id/az_bar"
+        android:id="@+id/add_pro_name"
         android:layout_width="176dp"
         android:layout_height="53dp"
         android:layout_marginEnd="60dp"
@@ -45,17 +45,19 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/backok"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="60dp"
         android:layout_height="49dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="136dp"
         app:layout_constraintBottom_toTopOf="@+id/backok"
-        app:layout_constraintEnd_toStartOf="@+id/az_bar"
-        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintEnd_toStartOf="@+id/add_pro_name"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/az_bar"
         app:layout_constraintVertical_bias="1.0"
