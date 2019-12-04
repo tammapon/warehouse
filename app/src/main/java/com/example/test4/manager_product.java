@@ -210,7 +210,7 @@ public class manager_product extends AppCompatActivity {
                 // set item title fontsize
                 deleteItem.setTitleSize(14);
                 // set item title font color
-                deleteItem.setTitleColor(getResources().getColor(R.color.gray));
+                deleteItem.setTitleColor(getResources().getColor(R.color.colorPrimaryDark));
                 // add to menu
                 menu.addMenuItem(deleteItem);
             }
