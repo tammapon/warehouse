@@ -46,7 +46,7 @@
         android:fontFamily="@font/segoe"
         android:shadowColor="#00C21F1F"
         android:text="@string/add_team"
-        android:textColor="#ffffff"
+        android:textColor="#000000"
         android:textIsSelectable="false"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
